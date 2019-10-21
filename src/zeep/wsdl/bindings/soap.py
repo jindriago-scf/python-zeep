@@ -81,11 +81,6 @@ class SoapBinding(Binding):
                     envelope, http_headers, operation_obj, options
                 )
 
-            # Apply plugins
-            envelope, http_headers = plugins.apply_egress(
-                client, envelope, http_headers, operation_obj, options
-            )
-
             # Apply WSSE
             if client.wsse:
                 if isinstance(client.wsse, list):
@@ -93,6 +88,11 @@ class SoapBinding(Binding):
                         envelope, http_headers = wsse.apply(envelope, http_headers)
                 else:
                     envelope, http_headers = client.wsse.apply(envelope, http_headers)
+
+            # Apply plugins
+            envelope, http_headers = plugins.apply_egress(
+                client, envelope, http_headers, operation_obj, options
+            )
 
         # Add extra http headers from the setings object
         if client.settings.extra_http_headers:
@@ -181,12 +181,16 @@ class SoapBinding(Binding):
             if process_xop(doc, message_pack):
                 message_pack = None
 
-        if client.wsse:
-            client.wsse.verify(doc)
-
         doc, http_headers = plugins.apply_ingress(
             client, doc, response.headers, operation
         )
+
+        if client.wsse:
+            if not isinstance(client.wsse, list):
+                client.wsse.verify(doc)
+            else:
+                for wsse_item in (wsse_item for wsse_item in client.wsse if "verify" in dir(wsse_item)):
+                    wsse_item.verify(doc)
 
         # If the response code is not 200 or if there is a Fault node available
         # then assume that an error occured.
