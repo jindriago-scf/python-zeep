@@ -58,13 +58,13 @@ with open('README.rst') as fh:
         '^.. start-no-pypi.*^.. end-no-pypi', '', fh.read(), flags=re.M | re.S)
 
 setup(
-    name='zeep',
-    version='3.4.0',
-    description='A modern/fast Python SOAP client based on lxml / requests',
+    name='zeep-bold',
+    version='3.5.0',
+    description='A fork of Michael van Tellingen of python-zeep',
     long_description=long_description,
-    author="Michael van Tellingen",
-    author_email="michaelvantellingen@gmail.com",
-    url='http://docs.python-zeep.org',
+    author="Julio Indriago",
+    author_email="julio.indriago@bold.co",
+    url='https://github.com/jindriago-scf/python-zeep',
 
     install_requires=install_requires,
     tests_require=tests_require,
