@@ -2,6 +2,12 @@
 Zeep: Python SOAP client 
 ========================
 
+This is a fork of (mvantellingen/python-zeep)[https://github.com/mvantellingen/python-zeep]. For now it just runs the plugins after signing when making the request, and before when processing the response.
+
+We did this because we needed to encrypt in those moments and we didn't saw a way to do it. So we used plugins to do it, and needed to encrypt after sign in the request and before in the response.
+
+Maybe in the future we could implement a "Encryption Plugin" and return the "Normal Plugin" execution where it belongs.
+
 A fast and modern Python SOAP client
 
 Highlights:
