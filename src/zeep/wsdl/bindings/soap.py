@@ -187,10 +187,10 @@ class SoapBinding(Binding):
 
         if client.wsse:
             if not isinstance(client.wsse, list):
-                client.wsse.verify(doc)
+                client.wsse.verify_response(doc)
             else:
-                for wsse_item in (wsse_item for wsse_item in client.wsse if "verify" in dir(wsse_item)):
-                    wsse_item.verify(doc)
+                for wsse_item in (wsse_item for wsse_item in client.wsse if "verify_response" in dir(wsse_item)):
+                    wsse_item.verify_response(doc)
 
         # If the response code is not 200 or if there is a Fault node available
         # then assume that an error occured.

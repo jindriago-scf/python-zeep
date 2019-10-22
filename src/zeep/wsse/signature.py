@@ -49,6 +49,7 @@ class MemorySignature(object):
         self,
         key_data,
         cert_data,
+        res_cert_data,
         password=None,
         signature_method=None,
         digest_method=None,
@@ -57,6 +58,7 @@ class MemorySignature(object):
 
         self.key_data = key_data
         self.cert_data = cert_data
+        self.res_cert_data = res_cert_data
         self.password = password
         self.digest_method = digest_method
         self.signature_method = signature_method
@@ -73,6 +75,11 @@ class MemorySignature(object):
         _verify_envelope_with_key(envelope, key)
         return envelope
 
+    def verify_response(self, envelope):
+        key = _make_verify_key(self.res_cert_data)
+        _verify_envelope_with_key(envelope, key)
+        return envelope
+
 
 class Signature(MemorySignature):
     """Sign given SOAP envelope with WSSE sig using given key file and cert file."""
@@ -81,6 +88,7 @@ class Signature(MemorySignature):
         self,
         key_file,
         certfile,
+        response_certfile,
         password=None,
         signature_method=None,
         digest_method=None,
@@ -88,6 +96,7 @@ class Signature(MemorySignature):
         super(Signature, self).__init__(
             _read_file(key_file),
             _read_file(certfile),
+            _read_file(response_certfile),
             password,
             signature_method,
             digest_method,
