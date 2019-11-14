@@ -35,8 +35,8 @@ class UsernameToken(object):
 
     """
 
-    username_token_profile_ns = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0"  # noqa
-    soap_message_secutity_ns = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0"  # noqa
+    username_token_profile_ns = "https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0"  # noqa
+    soap_message_secutity_ns = "https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0"  # noqa
 
     def __init__(
         self,

@@ -1,4 +1,4 @@
-<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+<schema xmlns="https://www.w3.org/2001/XMLSchema"
         targetNamespace="http://example.com/stockquote.xsd"
         xmlns:tns="http://example.com/stockquote.xsd" >
   <complexType name="Address">

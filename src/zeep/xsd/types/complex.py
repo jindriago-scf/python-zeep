@@ -142,7 +142,7 @@ class ComplexType(AnyType):
     @property
     def _array_type(self):
         attrs = {attr.qname.text: attr for attr in self._attributes if attr.qname}
-        array_type = attrs.get("{http://schemas.xmlsoap.org/soap/encoding/}arrayType")
+        array_type = attrs.get("{https://schemas.xmlsoap.org/soap/encoding/}arrayType")
         return array_type
 
     def parse_xmlelement(

@@ -2,12 +2,12 @@
 <definitions 
     xmlns:tns="http://example.com/stockquote.wsdl" 
     xmlns:xsd1="http://example.com/stockquote.xsd" 
-    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns="https://schemas.xmlsoap.org/wsdl/"
     name="StockQuote" 
     targetNamespace="http://example.com/stockquote.wsdl">
   <types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema" 
+    <schema xmlns="https://www.w3.org/2001/XMLSchema"
             targetNamespace="http://example.com/stockquote.xsd"
             xmlns:tns="http://example.com/stockquote.xsd" >
       <complexType name="Address">
@@ -90,7 +90,7 @@
   </portType>
 
   <binding name="StockQuoteBinding" type="tns:StockQuotePortType">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
     <operation name="GetLastTradePrice">
       <soap:operation soapAction="http://example.com/GetLastTradePrice"/>
       <input>
@@ -109,7 +109,7 @@
   </binding>
 
   <binding name="StockQuoteBinding" type="tns:StockQuotePortType">
-	  <soap:binding style="document" transport="http://schemas.microsoft.com/soap/tcp"/>
+	  <soap:binding style="document" transport="https://schemas.microsoft.com/soap/tcp"/>
     <operation name="GetLastTradePrice">
       <soap:operation soapAction="http://example.com/GetLastTradePrice"/>
       <input>

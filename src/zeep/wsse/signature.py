@@ -23,7 +23,7 @@ except ImportError:
 
 
 # SOAP envelope
-SOAP_NS = "http://schemas.xmlsoap.org/soap/envelope/"
+SOAP_NS = "https://schemas.xmlsoap.org/soap/envelope/"
 
 
 def _read_file(f_name):
@@ -170,28 +170,28 @@ def sign_envelope(
     <soap:Envelope>
       <soap:Header>
         <wsse:Security mustUnderstand="true">
-          <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+          <Signature xmlns="https://www.w3.org/2000/09/xmldsig#">
             <SignedInfo>
               <CanonicalizationMethod
-                  Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                  Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>
               <SignatureMethod
-                  Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                  Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
               <Reference URI="#id-d0f9fd77-f193-471f-8bab-ba9c5afa3e76">
                 <Transforms>
                   <Transform
-                      Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                      Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>
                 </Transforms>
                 <DigestMethod
-                    Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                    Algorithm="https://www.w3.org/2000/09/xmldsig#sha1"/>
                 <DigestValue>nnjjqTKxwl1hT/2RUsBuszgjTbI=</DigestValue>
               </Reference>
               <Reference URI="#id-7c425ac1-534a-4478-b5fe-6cae0690f08d">
                 <Transforms>
                   <Transform
-                      Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                      Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>
                 </Transforms>
                 <DigestMethod
-                    Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                    Algorithm="https://www.w3.org/2000/09/xmldsig#sha1"/>
                 <DigestValue>qAATZaSqAr9fta9ApbGrFWDuCCQ=</DigestValue>
               </Reference>
             </SignedInfo>
@@ -279,16 +279,16 @@ def _sign_envelope_with_key_binary(envelope, key, signature_method, digest_metho
         sec_token_ref,
         QName(ns.WSSE, "Reference"),
         {
-            "ValueType": "http://docs.oasis-open.org/wss/2004/01/"
+            "ValueType": "https://docs.oasis-open.org/wss/2004/01/"
             "oasis-200401-wss-x509-token-profile-1.0#X509v3"
         },
     )
     bintok = etree.Element(
         QName(ns.WSSE, "BinarySecurityToken"),
         {
-            "ValueType": "http://docs.oasis-open.org/wss/2004/01/"
+            "ValueType": "https://docs.oasis-open.org/wss/2004/01/"
             "oasis-200401-wss-x509-token-profile-1.0#X509v3",
-            "EncodingType": "http://docs.oasis-open.org/wss/2004/01/"
+            "EncodingType": "https://docs.oasis-open.org/wss/2004/01/"
             "oasis-200401-wss-soap-message-security-1.0#Base64Binary",
         },
     )

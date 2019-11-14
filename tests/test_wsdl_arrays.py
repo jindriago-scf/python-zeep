@@ -12,7 +12,7 @@ from zeep import xsd
 def transport():
     transport = DummyTransport()
     transport.bind(
-        "http://schemas.xmlsoap.org/soap/encoding/",
+        "https://schemas.xmlsoap.org/soap/encoding/",
         load_xml(io.open("tests/wsdl_files/soap-enc.xsd", "r").read().encode("utf-8")),
     )
     return transport
@@ -23,11 +23,11 @@ def test_simple_type(transport):
         load_xml(
             """
     <xsd:schema
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
         targetNamespace="http://tests.python-zeep.org/tns">
-      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
       <xsd:complexType name="ArrayOfString">
         <xsd:complexContent>
           <xsd:restriction base="SOAP-ENC:Array">
@@ -51,11 +51,11 @@ def test_simple_type(transport):
 
     expected = """
         <document>
-            <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">item</item>
-            <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">and</item>
-            <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">even</item>
-            <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">more</item>
-            <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">items</item>
+            <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">item</item>
+            <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">and</item>
+            <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">even</item>
+            <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">more</item>
+            <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">items</item>
         </document>
     """  # noqa
 
@@ -71,12 +71,12 @@ def test_simple_type_nested(transport):
         load_xml(
             """
     <xsd:schema
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
         targetNamespace="http://tests.python-zeep.org/tns"
         xmlns:tns="http://tests.python-zeep.org/tns">
-      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
       <xsd:complexType name="container">
         <xsd:sequence>
           <xsd:element name="strings" type="tns:ArrayOfString"/>
@@ -107,11 +107,11 @@ def test_simple_type_nested(transport):
     expected = """
         <document>
             <strings>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">item</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">and</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">even</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">more</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">items</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">item</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">and</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">even</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">more</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">items</item>
             </strings>
         </document>
     """  # noqa
@@ -127,12 +127,12 @@ def test_simple_type_nested_inline_type(transport):
         load_xml(
             """
     <xsd:schema
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
         targetNamespace="http://tests.python-zeep.org/tns"
         xmlns:tns="http://tests.python-zeep.org/tns">
-      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
       <xsd:complexType name="container">
         <xsd:sequence>
           <xsd:element name="strings" type="tns:ArrayOfString"/>
@@ -155,13 +155,13 @@ def test_simple_type_nested_inline_type(transport):
     Container = schema.get_type("ns0:container")
     node = load_xml(
         """
-        <document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <strings xsi:type="soapenc:Array" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">item</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">and</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">even</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">more</item>
-              <item xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">items</item>
+        <document xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+            <strings xsi:type="soapenc:Array" xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/">
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">item</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">and</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">even</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">more</item>
+              <item xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">items</item>
             </strings>
         </document>
     """
@@ -176,12 +176,12 @@ def test_complex_type(transport):
         load_xml(
             """
     <xsd:schema
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
         xmlns:tns="http://tests.python-zeep.org/tns"
         targetNamespace="http://tests.python-zeep.org/tns">
-      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
 
       <xsd:complexType name="ArrayObject">
         <xsd:sequence>
@@ -251,12 +251,12 @@ def test_complex_type_without_name(transport):
         load_xml(
             """
     <xsd:schema
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
         xmlns:tns="http://tests.python-zeep.org/tns"
         targetNamespace="http://tests.python-zeep.org/tns">
-      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
 
       <xsd:complexType name="ArrayObject">
         <xsd:sequence>
@@ -322,7 +322,7 @@ def test_complex_type_without_name(transport):
 def test_soap_array_parse_remote_ns():
     transport = DummyTransport()
     transport.bind(
-        "http://schemas.xmlsoap.org/soap/encoding/",
+        "https://schemas.xmlsoap.org/soap/encoding/",
         load_xml(io.open("tests/wsdl_files/soap-enc.xsd", "r").read().encode("utf-8")),
     )
 
@@ -331,14 +331,14 @@ def test_soap_array_parse_remote_ns():
             """
         <?xml version="1.0"?>
         <xsd:schema
-          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/"
-          xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/"
+          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
           targetNamespace="http://tests.python-zeep.org/"
           elementFormDefault="qualified">
-          <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+          <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
           <xsd:simpleType name="CountryCodeType">
             <xsd:restriction base="xsd:string">
               <xsd:length value="2"/>
@@ -371,9 +371,9 @@ def test_soap_array_parse_remote_ns():
             SOAP-ENC:arrayType="ns1:CountryItemType[1]"
             xsi:type="ns1:CountriesArrayType"
             xmlns:ns1="http://tests.python-zeep.org/"
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
+          xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
         <item xsi:type="ns1:CountryItemType">
           <code xsi:type="ns1:CountryCodeType">NL</code>
           <name xsi:type="xsd:string">The Netherlands</name>
@@ -392,20 +392,20 @@ def test_soap_array_parse_remote_ns():
 def test_wsdl_array_type():
     transport = DummyTransport()
     transport.bind(
-        "http://schemas.xmlsoap.org/soap/encoding/",
+        "https://schemas.xmlsoap.org/soap/encoding/",
         load_xml(io.open("tests/wsdl_files/soap-enc.xsd", "r").read().encode("utf-8")),
     )
 
     schema = xsd.Schema(
         load_xml(
             """
-        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        <xsd:schema xmlns:xsd="https://www.w3.org/2001/XMLSchema"
                     xmlns:tns="http://tests.python-zeep.org/"
-                    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-                    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                    xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
+                    xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
                     targetNamespace="http://tests.python-zeep.org/"
                     elementFormDefault="qualified">
-          <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+          <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
           <xsd:complexType name="array">
             <xsd:complexContent>
               <xsd:restriction base="SOAP-ENC:Array">
@@ -466,7 +466,7 @@ def test_wsdl_array_type():
 def test_soap_array_parse():
     transport = DummyTransport()
     transport.bind(
-        "http://schemas.xmlsoap.org/soap/encoding/",
+        "https://schemas.xmlsoap.org/soap/encoding/",
         load_xml(io.open("tests/wsdl_files/soap-enc.xsd", "r").read().encode("utf-8")),
     )
 
@@ -474,13 +474,13 @@ def test_soap_array_parse():
         load_xml(
             """
     <?xml version="1.0"?>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema"
+    <schema xmlns="https://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
-      <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
       <complexType name="FlagDetailsStruct">
           <sequence>
               <element name="Name">
@@ -541,13 +541,13 @@ def test_xml_soap_enc_string(transport):
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
-          <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+          <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
 
           <xsd:element name="value" type="tns:ArrayOfString"/>
 
@@ -581,7 +581,7 @@ def test_xml_soap_enc_string(transport):
     assert obj[0]["_value_1"] == "foo"
 
     # Via string-types
-    string_type = schema.get_type("{http://schemas.xmlsoap.org/soap/encoding/}string")
+    string_type = schema.get_type("{https://schemas.xmlsoap.org/soap/encoding/}string")
     obj = shoe_type([string_type("foo")])
     node = render_node(shoe_type, obj)
     expected = """
@@ -597,7 +597,7 @@ def test_xml_soap_enc_string(transport):
     assert obj[0]["_value_1"] == "foo"
 
     # Via dicts
-    string_type = schema.get_type("{http://schemas.xmlsoap.org/soap/encoding/}string")
+    string_type = schema.get_type("{https://schemas.xmlsoap.org/soap/encoding/}string")
     obj = shoe_type([{"_value_1": "foo"}])
     node = render_node(shoe_type, obj)
     expected = """

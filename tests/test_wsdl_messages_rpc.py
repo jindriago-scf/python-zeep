@@ -9,10 +9,10 @@ from zeep.wsdl import wsdl
 def test_serialize():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
       <message name="Input">
@@ -27,7 +27,7 @@ def test_serialize():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -51,7 +51,7 @@ def test_serialize():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:TestOperation xmlns:ns0="http://test.python-zeep.org/tests/rpc">
               <arg1>ah1</arg1>
@@ -66,10 +66,10 @@ def test_serialize():
 def test_serialize_empty_input():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
       <portType name="TestPortType">
@@ -81,7 +81,7 @@ def test_serialize_empty_input():
       <message name="TestOperationRequests"/>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -103,7 +103,7 @@ def test_serialize_empty_input():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:TestOperation xmlns:ns0="http://test.python-zeep.org/tests/rpc"/>
           </soap-env:Body>
@@ -115,10 +115,10 @@ def test_serialize_empty_input():
 def test_deserialize():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <message name="Output">
         <part name="result" type="xsd:string"/>
@@ -131,7 +131,7 @@ def test_deserialize():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <output>
@@ -152,7 +152,7 @@ def test_deserialize():
     document = load_xml(
         """
         <soap-env:Envelope
-          xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+          xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:Output xmlns:ns0="http://test.python-zeep.org/tests/rpc">
               <result>ah1</result>
@@ -169,16 +169,16 @@ def test_deserialize():
 def test_wsdl_array_of_simple_types():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
         targetNamespace="http://tests.python-zeep.org/tns"
         xmlns:tns="http://tests.python-zeep.org/tns"
         xmlns:impl="http://tests.python-zeep.org/tns"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/">
       <types>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tests.python-zeep.org/tns">
+        <schema xmlns="https://www.w3.org/2001/XMLSchema" targetNamespace="http://tests.python-zeep.org/tns">
           <complexType name="ArrayOfString">
             <complexContent>
               <restriction base="soapenc:Array">
@@ -195,14 +195,14 @@ def test_wsdl_array_of_simple_types():
         </operation>
       </portType>
       <binding name="SimpleTypeArrayBinding" type="tns:SimpleTypeArrayPortType">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
         <operation name="getSimpleArray">
           <soap:operation soapAction=""/>
           <input>
-            <soap:body use="encoded" namespace="http://tests.python-zeep.org/tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <soap:body use="encoded" namespace="http://tests.python-zeep.org/tns" encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"/>
           </input>
           <output>
-            <soap:body parts="return" use="encoded" namespace="http://tests.python-zeep.org/tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <soap:body parts="return" use="encoded" namespace="http://tests.python-zeep.org/tns" encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"/>
           </output>
         </operation>
       </binding>
@@ -216,7 +216,7 @@ def test_wsdl_array_of_simple_types():
 
     transport = DummyTransport()
     transport.bind(
-        "http://schemas.xmlsoap.org/soap/encoding/",
+        "https://schemas.xmlsoap.org/soap/encoding/",
         load_xml(io.open("tests/wsdl_files/soap-enc.xsd", "r").read().encode("utf-8")),
     )
     root = wsdl.Document(wsdl_content, transport)
@@ -226,12 +226,12 @@ def test_wsdl_array_of_simple_types():
 
     document = load_xml(
         """
-    <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:SOAP-ENV="https://schemas.xmlsoap.org/soap/envelope/"
         xmlns:ns1="http://tests.python-zeep.org/tns"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
       <SOAP-ENV:Body>
         <ns1:getSimpleArrayResponse>
             <return SOAP-ENC:arrayType="xsd:string[16]" xsi:type="ns1:ArrayOfString">
@@ -257,12 +257,12 @@ def test_handle_incorrectly_qualified():
         """
     <?xml version="1.0"?>
     <wsdl:definitions
-        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns="https://schemas.xmlsoap.org/wsdl/"
         xmlns:tns="http://tests.python-zeep.org/tns"
-        xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
         targetNamespace="http://tests.python-zeep.org/tns">
       <wsdl:message name="getResponse">
         <wsdl:part name="getItemReturn" type="xsd:string"/>
@@ -275,17 +275,17 @@ def test_handle_incorrectly_qualified():
         </wsdl:operation>
       </wsdl:portType>
       <wsdl:binding name="TestSoapBinding" type="tns:Test">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="getItem">
           <soap:operation soapAction=""/>
           <wsdl:input name="getRequest">
             <soap:body
-                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"
                 namespace="http://tests.python-zeep.org/tns" use="encoded"/>
           </wsdl:input>
           <wsdl:output name="getResponse">
             <soap:body
-                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"
                 namespace="http://tests.python-zeep.org/tns" use="encoded"/>
           </wsdl:output>
         </wsdl:operation>
@@ -308,12 +308,12 @@ def test_handle_incorrectly_qualified():
     document = load_xml(
         """
     <soapenv:Envelope
-        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
       <soapenv:Body>
         <ns1:getResponse
-            soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            soapenv:encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"
             xmlns:ns1="http://tests.python-zeep.org/tns">
           <ns1:getItemReturn xsi:type="xsd:string">foobar</ns1:getItemReturn>
         </ns1:getResponse>
@@ -331,12 +331,12 @@ def test_deserialize_rpc_literal():
         """
     <?xml version="1.0"?>
     <wsdl:definitions
-        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns="https://schemas.xmlsoap.org/wsdl/"
         xmlns:tns="http://tests.python-zeep.org/tns"
-        xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
         targetNamespace="http://tests.python-zeep.org/tns">
 
       <wsdl:message name="getItemSoapIn"></wsdl:message>
@@ -352,17 +352,17 @@ def test_deserialize_rpc_literal():
       </wsdl:portType>
 
       <wsdl:binding name="TestSoapBinding" type="tns:Test">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="getItem">
           <soap:operation soapAction=""/>
           <wsdl:input>
             <soap:body
-                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"
                 namespace="http://tests.python-zeep.org/tns" use="encoded"/>
           </wsdl:input>
           <wsdl:output>
             <soap:body
-                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"
                 namespace="http://tests.python-zeep.org/tns" use="encoded"/>
           </wsdl:output>
         </wsdl:operation>
@@ -385,12 +385,12 @@ def test_deserialize_rpc_literal():
     document = load_xml(
         """
     <soapenv:Envelope
-        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
       <soapenv:Body>
         <ns1:getItemResponse
-            soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            soapenv:encodingStyle="https://schemas.xmlsoap.org/soap/encoding/"
             xmlns:ns1="http://tests.python-zeep.org/tns">
           <ns1:getItemReturn xsi:type="xsd:string">foobar</ns1:getItemReturn>
         </ns1:getItemResponse>
@@ -405,11 +405,11 @@ def test_deserialize_rpc_literal():
 def test_deserialize_x():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:wsam="https://www.w3.org/2007/05/addressing/metadata"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
 
@@ -428,7 +428,7 @@ def test_deserialize_x():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
         <operation name="clearFoo">
           <soap:operation soapAction=""/>
           <input>
@@ -450,7 +450,7 @@ def test_deserialize_x():
     document = load_xml(
         """
         <?xml version="1.0" ?>
-        <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        <S:Envelope xmlns:S="https://schemas.xmlsoap.org/soap/envelope/">
             <S:Body>
                 <ns2:clearFooResponse xmlns:ns2="http://foo.services.example.com/"/>
             </S:Body>

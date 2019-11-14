@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
-                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
-                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+<wsdl:definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
                   xmlns:tns="http://test.python-zeep.org/tests"
                   targetNamespace="http://test.python-zeep.org/tests">
   <wsdl:types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://test.python-zeep.org/recursive/main" elementFormDefault="qualified">
+    <schema xmlns="https://www.w3.org/2001/XMLSchema" targetNamespace="http://test.python-zeep.org/recursive/main" elementFormDefault="qualified">
       <import namespace="http://test.python-zeep.org/recursive/main/a" schemaLocation="recursive_schema_a.xsd"/>
     </schema>
   </wsdl:types>
   <wsdl:portType name="portje">
     </wsdl:portType>
     <wsdl:binding name="binding" type="portje">
-        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
     </wsdl:binding>
     <wsdl:service name="SOAPService">
         <wsdl:port name="zeepje" binding="tns:binding">

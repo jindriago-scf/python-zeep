@@ -15,7 +15,7 @@ def test_soap11_no_output():
     client = Client("tests/wsdl_files/soap.wsdl")
     content = """
         <soapenv:Envelope
-            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
           <soapenv:Body></soapenv:Body>
         </soapenv:Envelope>
@@ -31,7 +31,7 @@ def test_soap11_process_error():
     response = load_xml(
         """
         <soapenv:Envelope
-            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
           <soapenv:Body>
             <soapenv:Fault>
@@ -68,7 +68,7 @@ def test_soap12_process_error():
         <soapenv:Envelope
             xmlns="http://example.com/example1"
             xmlns:ex="http://example.com/example2"
-            xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+            xmlns:soapenv="https://www.w3.org/2003/05/soap-envelope">
           <soapenv:Body>
             <soapenv:Fault>
              <soapenv:Code>
@@ -144,7 +144,7 @@ def test_no_content_type():
     data = """
         <?xml version="1.0"?>
         <soapenv:Envelope
-            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
            <soapenv:Header/>
            <soapenv:Body>
@@ -230,10 +230,10 @@ def test_mime_multipart():
 
         <?xml version='1.0' ?>
         <SOAP-ENV:Envelope
-        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+        xmlns:SOAP-ENV="https://schemas.xmlsoap.org/soap/envelope/">
         <SOAP-ENV:Body>
         <claim:insurance_claim_auto id="insurance_claim_document_id"
-        xmlns:claim="http://schemas.risky-stuff.com/Auto-Claim">
+        xmlns:claim="https://schemas.risky-stuff.com/Auto-Claim">
         <theSignedForm href="cid:claim061400a.tiff@claiming-it.com"/>
         <theCrashPhoto href="cid:claim061400a.jpeg@claiming-it.com"/>
         <!-- ... more claim details go here... -->
@@ -290,10 +290,10 @@ def test_mime_multipart_no_encoding():
 
         <?xml version='1.0' ?>
         <SOAP-ENV:Envelope
-        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+        xmlns:SOAP-ENV="https://schemas.xmlsoap.org/soap/envelope/">
         <SOAP-ENV:Body>
         <claim:insurance_claim_auto id="insurance_claim_document_id"
-        xmlns:claim="http://schemas.risky-stuff.com/Auto-Claim">
+        xmlns:claim="https://schemas.risky-stuff.com/Auto-Claim">
         <theSignedForm href="cid:claim061400a.tiff@claiming-it.com"/>
         <theCrashPhoto href="cid:claim061400a.jpeg@claiming-it.com"/>
         <!-- ... more claim details go here... -->
@@ -342,7 +342,7 @@ def test_unexpected_headers():
     data = """
         <?xml version="1.0"?>
         <soapenv:Envelope
-            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
            <soapenv:Header>
              <stoc:IamUnexpected>uhoh</stoc:IamUnexpected>

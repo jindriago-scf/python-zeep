@@ -8,8 +8,8 @@ def test_parse_response():
         b"""
         <?xml version="1.0"?>
         <wsdl:definitions
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns="https://www.w3.org/2001/XMLSchema"
+            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
             xmlns:tns="http://tests.python-zeep.org/">
           <wsdl:types>
             <schema targetNamespace="http://tests.python-zeep.org/"
@@ -50,9 +50,9 @@ def test_parse_response():
         b"""
         <?xml version="1.0" encoding="utf-8"?>
         <soap:Envelope
-            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
           <soap:Body>
             <ZeepExampleResponse xmlns="http://tests.python-zeep.org/">
               <ZeepExampleResult>
@@ -73,14 +73,14 @@ def test_parse_response():
         </soap:Envelope>
     """.strip()
     )
-    schema = Schema(schema_node.find("*/{http://www.w3.org/2001/XMLSchema}schema"))
+    schema = Schema(schema_node.find("*/{https://www.w3.org/2001/XMLSchema}schema"))
     assert schema
     response_type = schema.get_element(
         "{http://tests.python-zeep.org/}ZeepExampleResponse"
     )
 
     nsmap = {
-        "soap": "http://schemas.xmlsoap.org/soap/envelope/",
+        "soap": "https://schemas.xmlsoap.org/soap/envelope/",
         "tns": "http://tests.python-zeep.org/",
     }
     node = response_node.find("soap:Body/tns:ZeepExampleResponse", namespaces=nsmap)

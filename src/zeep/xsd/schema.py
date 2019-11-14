@@ -193,7 +193,7 @@ class Schema(object):
             if namespace == other_namespace:
                 return prefix
 
-        if namespace == "http://schemas.xmlsoap.org/soap/envelope/":
+        if namespace == "https://schemas.xmlsoap.org/soap/envelope/":
             return "soap-env"
         return namespace
 
@@ -284,7 +284,7 @@ class Schema(object):
             return etree.QName(name)
 
     def _create_prefix_map(self):
-        prefix_map = {"xsd": "http://www.w3.org/2001/XMLSchema"}
+        prefix_map = {"xsd": "https://www.w3.org/2001/XMLSchema"}
         i = 0
         for namespace in self.documents.get_all_namespaces():
             if namespace is None or namespace in prefix_map.values():

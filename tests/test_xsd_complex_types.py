@@ -10,7 +10,7 @@ def test_xml_xml_single_node():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        <schema xmlns="https://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -49,7 +49,7 @@ def test_xml_nested_sequence():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        <schema xmlns="https://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -99,7 +99,7 @@ def test_xml_restriction_self():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        <schema xmlns="https://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -133,7 +133,7 @@ def test_xml_single_node_array():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        <schema xmlns="https://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -175,7 +175,7 @@ def test_xml_single_node_no_iterable():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        <schema xmlns="https://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -207,7 +207,7 @@ def test_xml_complex_any_types():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        <schema xmlns="https://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -263,20 +263,20 @@ def test_xml_complex_any_types():
         """
     <document>
       <ns0:container xmlns:ns0="http://tests.python-zeep.org/">
-        <ns0:auth xmlns:ns1="http://xml.apache.org/xml-soap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:Map">
+        <ns0:auth xmlns:ns1="http://xml.apache.org/xml-soap" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="ns1:Map">
           <item>
-            <key xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Username</key>
-            <value xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">abc</value>
+            <key xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">Username</key>
+            <value xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">abc</value>
           </item>
           <item>
-            <key xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">ShopId</key>
-            <value xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:int">123</value>
+            <key xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">ShopId</key>
+            <value xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:int">123</value>
           </item>
         </ns0:auth>
-        <ns0:params xmlns:ns2="http://xml.apache.org/xml-soap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:Map">
+        <ns0:params xmlns:ns2="http://xml.apache.org/xml-soap" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:Map">
           <item>
-            <key xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">LimitNum</key>
-            <value xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:int">2</value>
+            <key xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">LimitNum</key>
+            <value xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:int">2</value>
           </item>
         </ns0:params>
       </ns0:container>
@@ -291,7 +291,7 @@ def test_xml_unparsed_elements():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        <schema xmlns="https://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -331,7 +331,7 @@ def test_xml_simple_content_nil():
         load_xml(
             """
     <?xml version="1.0"?>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema"
+    <schema xmlns="https://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -355,7 +355,7 @@ def test_xml_simple_content_nil():
 
     expected = """
       <document>
-        <ns0:container xmlns:ns0="http://tests.python-zeep.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        <ns0:container xmlns:ns0="http://tests.python-zeep.org/" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
       </document>
     """
     result = render_node(container_elm, obj)
@@ -370,7 +370,7 @@ def test_ignore_sequence_order():
         b"""
         <?xml version="1.0" encoding="utf-8"?>
         <xsd:schema xmlns:tns="http://tests.python-zeep.org/attr"
-          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
           elementFormDefault="qualified"
           targetNamespace="http://tests.python-zeep.org/attr">
           <xsd:complexType name="Result">
@@ -391,8 +391,8 @@ def test_ignore_sequence_order():
 
     response_doc = load_xml(
         b"""
-        <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-          <s:Body xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <s:Envelope xmlns:s="https://schemas.xmlsoap.org/soap/envelope/">
+          <s:Body xmlns:xsd="https://www.w3.org/2001/XMLSchema">
             <Response xmlns="http://tests.python-zeep.org/attr">
                 <Foo id="1"/>
                 <Baz id="3"/>
@@ -410,7 +410,7 @@ def test_ignore_sequence_order():
     node = response_doc.xpath(
         "//ns0:Response",
         namespaces={
-            "xsd": "http://www.w3.org/2001/XMLSchema",
+            "xsd": "https://www.w3.org/2001/XMLSchema",
             "ns0": "http://tests.python-zeep.org/attr",
         },
     )

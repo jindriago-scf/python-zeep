@@ -22,7 +22,7 @@ def as_qname(value, nsmap, target_namespace=None):
         # The xml: prefix is always bound to the XML namespace, see
         # https://www.w3.org/TR/xml-names/
         if prefix == "xml":
-            namespace = "http://www.w3.org/XML/1998/namespace"
+            namespace = "https://www.w3.org/XML/1998/namespace"
         else:
             namespace = nsmap.get(prefix)
 
