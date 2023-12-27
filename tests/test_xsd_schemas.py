@@ -12,26 +12,26 @@ from zeep.xsd.types.unresolved import UnresolvedType
 
 def test_default_types():
     schema = xsd.Schema()
-    xsd_string = schema.get_type("{https://www.w3.org/2001/XMLSchema}string")
+    xsd_string = schema.get_type("{http://www.w3.org/2001/XMLSchema}string")
     assert xsd_string == xsd.String()
 
 
 def test_default_types_not_found():
     schema = xsd.Schema()
     with pytest.raises(exceptions.LookupError):
-        schema.get_type("{https://www.w3.org/2001/XMLSchema}bar")
+        schema.get_type("{http://www.w3.org/2001/XMLSchema}bar")
 
 
 def test_default_elements():
     schema = xsd.Schema()
-    xsd_schema = schema.get_element("{https://www.w3.org/2001/XMLSchema}schema")
+    xsd_schema = schema.get_element("{http://www.w3.org/2001/XMLSchema}schema")
     isinstance(xsd_schema, Schema)
 
 
 def test_default_elements_not_found():
     schema = xsd.Schema()
     with pytest.raises(exceptions.LookupError):
-        schema.get_element("{https://www.w3.org/2001/XMLSchema}bar")
+        schema.get_element("{http://www.w3.org/2001/XMLSchema}bar")
 
 
 def test_invalid_namespace_handling():
@@ -65,7 +65,7 @@ def test_invalid_localname_handling():
             """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -115,7 +115,7 @@ def test_schema_repr_val():
             """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -134,7 +134,7 @@ def test_schema_doc_repr_val():
             """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -156,7 +156,7 @@ def test_multiple_extension():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -181,7 +181,7 @@ def test_multiple_extension():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             xmlns:c="http://tests.python-zeep.org/c"
@@ -204,7 +204,7 @@ def test_multiple_extension():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/c"
             targetNamespace="http://tests.python-zeep.org/c"
             elementFormDefault="qualified">
@@ -237,7 +237,7 @@ def test_global_element_and_type():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -262,7 +262,7 @@ def test_global_element_and_type():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             xmlns:c="http://tests.python-zeep.org/c"
@@ -282,7 +282,7 @@ def test_global_element_and_type():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/c"
             targetNamespace="http://tests.python-zeep.org/c"
             elementFormDefault="qualified">
@@ -320,7 +320,7 @@ def test_cyclic_imports():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -337,7 +337,7 @@ def test_cyclic_imports():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             xmlns:c="http://tests.python-zeep.org/c"
@@ -354,7 +354,7 @@ def test_cyclic_imports():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/c"
             targetNamespace="http://tests.python-zeep.org/c"
             elementFormDefault="qualified">
@@ -380,7 +380,7 @@ def test_get_type_through_import():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -399,7 +399,7 @@ def test_get_type_through_import():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             xmlns:c="http://tests.python-zeep.org/c"
@@ -422,7 +422,7 @@ def test_duplicate_target_namespace():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             elementFormDefault="qualified">
@@ -441,7 +441,7 @@ def test_duplicate_target_namespace():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/duplicate"
             targetNamespace="http://tests.python-zeep.org/duplicate"
             elementFormDefault="qualified">
@@ -460,7 +460,7 @@ def test_duplicate_target_namespace():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/duplicate"
             targetNamespace="http://tests.python-zeep.org/duplicate"
             elementFormDefault="qualified">
@@ -493,7 +493,7 @@ def test_multiple_no_namespace():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             elementFormDefault="qualified">
@@ -508,7 +508,7 @@ def test_multiple_no_namespace():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             elementFormDefault="qualified">
         </xsd:schema>
     """.strip()
@@ -525,7 +525,7 @@ def test_multiple_only_target_ns():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             elementFormDefault="qualified">
@@ -540,7 +540,7 @@ def test_multiple_only_target_ns():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/duplicate-ns">
         </xsd:schema>
@@ -558,7 +558,7 @@ def test_schema_error_handling():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -589,12 +589,12 @@ def test_schema_import_xmlsoap():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
-          <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
+          <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
         </xsd:schema>
     """.strip()
     )
@@ -607,12 +607,12 @@ def test_schema_import_unresolved():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
-          <xsd:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
+          <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
         </xsd:schema>
     """.strip()
     )
@@ -625,7 +625,7 @@ def test_no_target_namespace():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             elementFormDefault="qualified">
@@ -648,7 +648,7 @@ def test_no_target_namespace():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             elementFormDefault="qualified">
             <xsd:element name="bla" type="xsd:string"/>
         </xsd:schema>
@@ -665,7 +665,7 @@ def test_include_recursion():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -683,7 +683,7 @@ def test_include_recursion():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
@@ -698,7 +698,7 @@ def test_include_recursion():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
@@ -725,7 +725,7 @@ def test_include_relative():
         <?xml version="1.0"?>
         <xs:schema
             xmlns="http://tests.python-zeep.org/tns"
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://tests.python-zeep.org/a"
             elementFormDefault="qualified">
 
@@ -738,7 +738,7 @@ def test_include_relative():
     node_b = etree.fromstring(
         """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
             <xs:include schemaLocation="c.xsd"/>
             <xs:element name="bar" type="xs:string"/>
         </xs:schema>
@@ -748,7 +748,7 @@ def test_include_relative():
     node_c = etree.fromstring(
         """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
             <xs:element name="foo" type="xs:string"/>
         </xs:schema>
     """.strip()
@@ -769,7 +769,7 @@ def test_include_no_default_namespace():
         <?xml version="1.0"?>
         <xs:schema
             xmlns="http://tests.python-zeep.org/tns"
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://tests.python-zeep.org/tns"
             elementFormDefault="qualified">
 
@@ -786,7 +786,7 @@ def test_include_no_default_namespace():
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b">
 
             <xsd:simpleType name="my-string">
@@ -812,7 +812,7 @@ def test_include_no_default_namespace():
 def test_include_no_parent_default_namespace():
     schema_root = """
         <?xml version="1.0"?>
-        <xs:schema xmlns="http://tests.python-zeep.org/rootns" xmlns:tns="http://tests.python-zeep.org/tns" xmlns:xs="https://www.w3.org/2001/XMLSchema" targetNamespace="http://tests.python-zeep.org/rootns" elementFormDefault="qualified">
+        <xs:schema xmlns="http://tests.python-zeep.org/rootns" xmlns:tns="http://tests.python-zeep.org/tns" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tests.python-zeep.org/rootns" elementFormDefault="qualified">
             <xs:import namespace="http://tests.python-zeep.org/tns" schemaLocation="http://tests.python-zeep.org/tns.xsd"/>
             <xs:element name="root">
                 <xs:complexType>
@@ -827,7 +827,7 @@ def test_include_no_parent_default_namespace():
     # no default namespace, but targetNamespace
     schema_tns = """
         <?xml version="1.0"?>
-        <xs:schema xmlns:tns="http://tests.python-zeep.org/tns" targetNamespace="http://tests.python-zeep.org/tns" xmlns:xs="https://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+        <xs:schema xmlns:tns="http://tests.python-zeep.org/tns" targetNamespace="http://tests.python-zeep.org/tns" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
             <xs:include schemaLocation="http://tests.python-zeep.org/include.xsd" />
         </xs:schema>
         """.strip()
@@ -835,7 +835,7 @@ def test_include_no_parent_default_namespace():
     # no default namespace and no targetNamespace
     schema_include = """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
             <xs:complexType name="containerType">
                 <xs:sequence>
                     <xs:element name="item" type="itemType" />
@@ -893,7 +893,7 @@ def test_include_different_form_defaults():
         <?xml version="1.0"?>
         <xs:schema
             xmlns="http://tests.python-zeep.org/"
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://tests.python-zeep.org/">
 
             <xs:include
@@ -909,7 +909,7 @@ def test_include_different_form_defaults():
         <xsd:schema
             elementFormDefault="qualified"
             attributeFormDefault="qualified"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b">
 
             <xsd:element name="container" type="foo"/>
@@ -949,7 +949,7 @@ def test_merge():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -963,7 +963,7 @@ def test_merge():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
@@ -985,9 +985,9 @@ def test_xml_namespace():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
-            xmlns:xml="https://www.w3.org/XML/1998/namespace"
-            targetNamespace="https://www.w3.org/XML/1998/namespace"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            targetNamespace="http://www.w3.org/XML/1998/namespace"
             elementFormDefault="qualified">
           <xs:attribute name="lang" type="xs:string"/>
         </xs:schema>
@@ -995,19 +995,19 @@ def test_xml_namespace():
     )
 
     transport = DummyTransport()
-    transport.bind("https://www.w3.org/2001/xml.xsd", xmlns)
+    transport.bind("http://www.w3.org/2001/xml.xsd", xmlns)
 
     xsd.Schema(
         load_xml(
             """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
-          <xs:import namespace="https://www.w3.org/XML/1998/namespace"
-                     schemaLocation="https://www.w3.org/2001/xml.xsd"/>
+          <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+                     schemaLocation="http://www.w3.org/2001/xml.xsd"/>
           <xs:element name="container">
             <xs:complexType>
               <xs:sequence/>
@@ -1025,24 +1025,24 @@ def test_auto_import_known_schema():
     content = io.open("tests/wsdl_files/soap-enc.xsd", "rb").read()
 
     transport = DummyTransport()
-    transport.bind("https://schemas.xmlsoap.org/soap/encoding/", content)
+    transport.bind("http://schemas.xmlsoap.org/soap/encoding/", content)
 
     schema = xsd.Schema(
         load_xml(
             """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
-            xmlns:soap-enc="https://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
-          <xs:import namespace="https://schemas.xmlsoap.org/soap/encoding/"/>
+          <xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
           <xs:group ref="soap-enc:Struct"/>
         </xs:schema>
     """
         ),
         transport=transport,
     )
-    schema.set_ns_prefix("soap-enc", "https://schemas.xmlsoap.org/soap/encoding/")
+    schema.set_ns_prefix("soap-enc", "http://schemas.xmlsoap.org/soap/encoding/")
     schema.get_group("soap-enc:Struct")

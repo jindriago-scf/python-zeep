@@ -10,9 +10,9 @@ from zeep.utils import qname_attr
 from zeep.wsdl import definitions
 
 NSMAP = {
-    "wsdl": "https://schemas.xmlsoap.org/wsdl/",
-    "wsaw": "https://www.w3.org/2006/05/addressing/wsdl",
-    "wsam": "https://www.w3.org/2007/05/addressing/metadata",
+    "wsdl": "http://schemas.xmlsoap.org/wsdl/",
+    "wsaw": "http://www.w3.org/2006/05/addressing/wsdl",
+    "wsam": "http://www.w3.org/2007/05/addressing/metadata",
 }
 
 

@@ -96,7 +96,7 @@ class SchemaVisitor(object):
             # Some wsdl's reference to xs:schema, we ignore that for now. It
             # might be better in the future to process the actual schema file
             # so that it is handled correctly
-            if ref.namespace == "https://www.w3.org/2001/XMLSchema":
+            if ref.namespace == "http://www.w3.org/2001/XMLSchema":
                 return
             return xsd_elements.RefAttribute(
                 node.tag, ref, self.schema, array_type=array_type
@@ -216,7 +216,7 @@ class SchemaVisitor(object):
 
         # Hardcode the mapping between the xml namespace and the xsd for now.
         # This seems to fix issues with exchange wsdl's, see #220
-        if not location and namespace == "https://www.w3.org/XML/1998/namespace":
+        if not location and namespace == "http://www.w3.org/XML/1998/namespace":
             location = "https://www.w3.org/2001/xml.xsd"
 
         # Silently ignore import statements which we can't resolve via the
@@ -467,7 +467,7 @@ class SchemaVisitor(object):
         is_global = parent.tag == tags.schema
 
         # Check of wsdl:arayType
-        array_type = node.get("{https://schemas.xmlsoap.org/wsdl/}arrayType")
+        array_type = node.get("{http://schemas.xmlsoap.org/wsdl/}arrayType")
         if array_type:
             match = re.match(r"([^\[]+)", array_type)
             if match:
@@ -537,7 +537,7 @@ class SchemaVisitor(object):
         else:
             name = parent.get("name", "Anonymous")
             is_global = False
-        base_type = "{https://www.w3.org/2001/XMLSchema}string"
+        base_type = "{http://www.w3.org/2001/XMLSchema}string"
         qname = as_qname(name, node.nsmap, self.document._target_namespace)
 
         annotation, items = self._pop_annotation(list(node))
@@ -583,7 +583,7 @@ class SchemaVisitor(object):
 
         """
         children = []
-        base_type = "{https://www.w3.org/2001/XMLSchema}anyType"
+        base_type = "{http://www.w3.org/2001/XMLSchema}anyType"
 
         # If the complexType's parent is an element then this type is
         # anonymous and should have no name defined. Otherwise it's global
@@ -1207,7 +1207,7 @@ class SchemaVisitor(object):
 
         # Handle reserved namespace
         if name.namespace == "xml":
-            name = etree.QName("https://www.w3.org/XML/1998/namespace", name.localname)
+            name = etree.QName("http://www.w3.org/XML/1998/namespace", name.localname)
 
         # Various xsd builders assume that some schema's are available by
         # default (actually this is mostly just the soap-enc ns). So live with

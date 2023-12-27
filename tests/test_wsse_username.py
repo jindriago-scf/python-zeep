@@ -20,7 +20,7 @@ def test_integration():
     response = """
     <?xml version="1.0"?>
     <soapenv:Envelope
-        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:stoc="http://example.com/stockquote.xsd">
        <soapenv:Header/>
        <soapenv:Body>
@@ -42,10 +42,10 @@ def test_password_text():
         """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         >
           <soap-env:Body>
             <ns0:TradePriceRequest>
@@ -62,15 +62,15 @@ def test_password_text():
     expected = """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <soap-env:Header>
-            <wsse:Security xmlns:wsse="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
               <wsse:UsernameToken>
                 <wsse:Username>michael</wsse:Username>
-                <wsse:Password Type="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">geheim</wsse:Password>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">geheim</wsse:Password>
               </wsse:UsernameToken>
             </wsse:Security>
           </soap-env:Header>
@@ -93,10 +93,10 @@ def test_password_digest(monkeypatch):
         """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         >
           <soap-env:Body>
             <ns0:TradePriceRequest>
@@ -113,17 +113,17 @@ def test_password_digest(monkeypatch):
     expected = """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <soap-env:Header>
-            <wsse:Security xmlns:wsse="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
               <wsse:UsernameToken>
                 <wsse:Username>michael</wsse:Username>
-                <wsse:Password Type="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">hVicspAQSg70JNhe67OHqD9gexc=</wsse:Password>
-                <wsse:Nonce EncodingType="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">bW9ja2VkLXJhbmRvbQ==</wsse:Nonce>
-                <wsu:Created xmlns:wsu="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2016-05-08T12:00:00+00:00</wsu:Created>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">hVicspAQSg70JNhe67OHqD9gexc=</wsse:Password>
+                <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">bW9ja2VkLXJhbmRvbQ==</wsse:Nonce>
+                <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2016-05-08T12:00:00+00:00</wsu:Created>
               </wsse:UsernameToken>
             </wsse:Security>
           </soap-env:Header>
@@ -146,10 +146,10 @@ def test_password_digest_custom(monkeypatch):
         """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         >
           <soap-env:Body>
             <ns0:TradePriceRequest>
@@ -173,17 +173,17 @@ def test_password_digest_custom(monkeypatch):
     expected = """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <soap-env:Header>
-            <wsse:Security xmlns:wsse="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
               <wsse:UsernameToken>
                 <wsse:Username>michael</wsse:Username>
-                <wsse:Password Type="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">12345</wsse:Password>
-                <wsse:Nonce EncodingType="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">aWV0cw==</wsse:Nonce>
-                <wsu:Created xmlns:wsu="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2016-06-04T20:10:00+00:00</wsu:Created>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">12345</wsse:Password>
+                <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">aWV0cw==</wsse:Nonce>
+                <wsu:Created xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2016-06-04T20:10:00+00:00</wsu:Created>
               </wsse:UsernameToken>
             </wsse:Security>
           </soap-env:Header>
@@ -203,12 +203,12 @@ def test_password_prepared():
         """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         >
-          <soap-env:Header xmlns:ns0="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+          <soap-env:Header xmlns:ns0="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
             <ns0:Security>
               <ns0:UsernameToken/>
             </ns0:Security>
@@ -228,15 +228,15 @@ def test_password_prepared():
     expected = """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
-          <soap-env:Header xmlns:ns0="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <soap-env:Header xmlns:ns0="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
             <ns0:Security>
               <ns0:UsernameToken>
                 <ns0:Username>michael</ns0:Username>
-                <ns0:Password Type="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">geheim</ns0:Password>
+                <ns0:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">geheim</ns0:Password>
               </ns0:UsernameToken>
             </ns0:Security>
           </soap-env:Header>
@@ -256,13 +256,13 @@ def test_timestamp_token():
         """
             <soap-env:Envelope
                 xmlns:ns0="http://example.com/stockquote.xsd"
-                xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-                xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-                xmlns:wsu="https://schemas.xmlsoap.org/ws/2003/06/utility"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                xmlns:wsu="http://schemas.xmlsoap.org/ws/2003/06/utility"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             >
-              <soap-env:Header xmlns:ns0="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+              <soap-env:Header xmlns:ns0="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
                 <ns0:Security>
                   <ns0:UsernameToken/>
                 </ns0:Security>
@@ -295,18 +295,18 @@ def test_timestamp_token():
     expected = """
             <soap-env:Envelope
                 xmlns:ns0="http://example.com/stockquote.xsd"
-                xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-                xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-                xmlns:wsu="https://schemas.xmlsoap.org/ws/2003/06/utility"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema">
-              <soap-env:Header xmlns:ns0="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+                xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                xmlns:wsu="http://schemas.xmlsoap.org/ws/2003/06/utility"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <soap-env:Header xmlns:ns0="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
                 <ns0:Security>
                   <ns0:UsernameToken>
                     <ns0:Username>Vishu</ns0:Username>
-                    <ns0:Password Type="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">Guntupalli</ns0:Password>
+                    <ns0:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">Guntupalli</ns0:Password>
                   </ns0:UsernameToken>
-                  <wsu:Timestamp xmlns:wsu="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" Id="id-21a27a50-9ebf-49cc-96bf-fcf7131e7858">
+                  <wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" Id="id-21a27a50-9ebf-49cc-96bf-fcf7131e7858">
                        <wsu:Created>2018-11-18T15:44:27Z</wsu:Created>
                        <wsu:Expires>2018-11-18T15:54:27Z</wsu:Expires>
                   </wsu:Timestamp>

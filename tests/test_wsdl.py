@@ -19,7 +19,7 @@ def test_parse_soap_wsdl():
     response = """
         <?xml version="1.0"?>
         <soapenv:Envelope
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
            <soapenv:Header/>
            <soapenv:Body>
@@ -51,7 +51,7 @@ def test_parse_soap_wsdl():
         # Compare request body
         expected = """
         <soap-env:Envelope
-                xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
+                xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
                 xmlns:stoc="http://example.com/stockquote.xsd">
             <soap-env:Body>
               <stoc:TradePriceRequest>
@@ -78,7 +78,7 @@ def test_parse_soap_header_wsdl():
     response = """
     <?xml version="1.0"?>
     <soapenv:Envelope
-        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:stoc="http://example.com/stockquote.xsd">
        <soapenv:Header/>
        <soapenv:Body>
@@ -104,7 +104,7 @@ def test_parse_soap_header_wsdl():
         # Compare request body
         expected = """
         <soap-env:Envelope
-                xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+                xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
            <soap-env:Header>
               <ns0:Authentication xmlns:ns0="http://example.com/stockquote.xsd">
                  <username>ikke</username>
@@ -126,19 +126,19 @@ def test_parse_types_multiple_schemas():
     content = StringIO(
         """
     <?xml version="1.0"?>
-    <wsdl:definitions xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+    <wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:s1="http://microsoft.com/wsdl/types/"
-        xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
         xmlns:tns="http://tests.python-zeep.org/"
-        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
         targetNamespace="http://tests.python-zeep.org/">
       <wsdl:types>
         <xsd:schema elementFormDefault="qualified"
             xmlns:s1="http://microsoft.com/wsdl/types/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
             xmlns:tns="http://tests.python-zeep.org//"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://tests.python-zeep.org/">
           <xsd:import namespace="http://microsoft.com/wsdl/types/" />
           <xsd:element name="foobardiedar" type="s1:guid"/>
@@ -163,12 +163,12 @@ def test_parse_types_nsmap_issues():
     <?xml version="1.0"?>
     <wsdl:definitions targetNamespace="urn:ec.europa.eu:taxud:vies:services:checkVat"
       xmlns:tns1="urn:ec.europa.eu:taxud:vies:services:checkVat:types"
-      xmlns:soapenc="https://schemas.xmlsoap.org/soap/encoding/"
+      xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
       xmlns:impl="urn:ec.europa.eu:taxud:vies:services:checkVat"
       xmlns:apachesoap="http://xml.apache.org/xml-soap"
-      xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-      xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-      xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/">
+      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
       <wsdl:types>
         <xsd:schema attributeFormDefault="qualified"
             elementFormDefault="qualified"
@@ -202,7 +202,7 @@ def test_parse_soap_import_wsdl():
     content = io.open("tests/wsdl_files/soap-enc.xsd", "r", encoding="utf-8").read()
 
     with requests_mock.mock() as m:
-        m.get("https://schemas.xmlsoap.org/soap/encoding/", text=content)
+        m.get("http://schemas.xmlsoap.org/soap/encoding/", text=content)
 
         obj = wsdl.Document(
             "tests/wsdl_files/soap_import_main.wsdl", transport=client.transport
@@ -217,12 +217,12 @@ def test_multiple_extension():
         """
     <?xml version="1.0"?>
     <wsdl:definitions
-      xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-      xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-      xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/">
+      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
       <wsdl:types>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -239,7 +239,7 @@ def test_multiple_extension():
         </xs:schema>
 
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             xmlns:c="http://tests.python-zeep.org/c"
@@ -254,7 +254,7 @@ def test_multiple_extension():
             </xs:complexType>
         </xs:schema>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/c"
             targetNamespace="http://tests.python-zeep.org/c"
             elementFormDefault="qualified">
@@ -287,9 +287,9 @@ def test_create_import_schema(recwarn):
         """
     <?xml version="1.0"?>
     <wsdl:definitions
-      xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-      xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-      xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/">
+      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
 
       <wsdl:types>
         <xsd:schema>
@@ -309,7 +309,7 @@ def test_create_import_schema(recwarn):
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -322,7 +322,7 @@ def test_create_import_schema(recwarn):
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
@@ -349,9 +349,9 @@ def test_wsdl_imports_xsd(recwarn):
         """
     <?xml version="1.0"?>
     <wsdl:definitions
-      xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-      xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-      xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/">
+      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
       <wsdl:import location="a.xsd" namespace="http://tests.python-zeep.org/a"/>
     </wsdl:definitions>
     """.strip()
@@ -361,7 +361,7 @@ def test_wsdl_imports_xsd(recwarn):
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -375,7 +375,7 @@ def test_wsdl_imports_xsd(recwarn):
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
@@ -395,11 +395,11 @@ def test_import_schema_without_location(recwarn):
         """
     <?xml version="1.0"?>
     <wsdl:definitions
-      xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-      xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
       xmlns:b="http://tests.python-zeep.org/b"
       xmlns:c="http://tests.python-zeep.org/c"
-      xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
       targetNamespace="http://tests.python-zeep.org/transient"
       xmlns:tns="http://tests.python-zeep.org/transient">
 
@@ -421,7 +421,7 @@ def test_import_schema_without_location(recwarn):
         </wsdl:operation>
       </wsdl:portType>
       <wsdl:binding name="binding" type="tns:port_type" >
-        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http" />
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsdl:operation name="method" >
           <soap:operation soapAction="method"/>
           <wsdl:input>
@@ -437,7 +437,7 @@ def test_import_schema_without_location(recwarn):
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -454,7 +454,7 @@ def test_import_schema_without_location(recwarn):
         """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
@@ -484,12 +484,12 @@ def test_wsdl_import(recwarn):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:import namespace="http://tests.python-zeep.org/wsdl-secondary"
             location="http://tests.python-zeep.org/schema-2.wsdl"/>
@@ -514,7 +514,7 @@ def test_wsdl_import(recwarn):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction=""/>
               <wsdl:input>
@@ -541,11 +541,11 @@ def test_wsdl_import(recwarn):
     wsdl_2 = """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/wsdl-secondary"
           xmlns:mine="http://tests.python-zeep.org/xsd-secondary"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/wsdl-secondary">
           <wsdl:types>
             <xsd:schema
@@ -571,14 +571,14 @@ def test_wsdl_import_transitive(recwarn):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-2"
           xmlns:third="http://tests.python-zeep.org/wsdl-3"
           xmlns:fourth="http://tests.python-zeep.org/wsdl-4"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:import namespace="http://tests.python-zeep.org/wsdl-2"
             location="http://tests.python-zeep.org/schema-2.wsdl"/>
@@ -609,7 +609,7 @@ def test_wsdl_import_transitive(recwarn):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction=""/>
               <wsdl:input>
@@ -642,11 +642,11 @@ def test_wsdl_import_transitive(recwarn):
     wsdl_2 = """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/wsdl-2"
           xmlns:mine="http://tests.python-zeep.org/xsd-2"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/wsdl-2">
           <wsdl:import namespace="http://tests.python-zeep.org/wsdl-3"
             location="http://tests.python-zeep.org/schema-3.wsdl"/>
@@ -666,11 +666,11 @@ def test_wsdl_import_transitive(recwarn):
     wsdl_3 = """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/wsdl-third"
           xmlns:mine="http://tests.python-zeep.org/xsd-3"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/wsdl-3">
           <wsdl:import namespace="http://tests.python-zeep.org/wsdl-2"
             location="http://tests.python-zeep.org/schema-2.wsdl"/>
@@ -692,11 +692,11 @@ def test_wsdl_import_transitive(recwarn):
     wsdl_4 = """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/wsdl-4"
           xmlns:mine="http://tests.python-zeep.org/xsd-4"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/wsdl-4">
           <wsdl:import namespace="http://tests.python-zeep.org/wsdl-3"
             location="http://tests.python-zeep.org/schema-3.wsdl"/>
@@ -720,13 +720,13 @@ def test_wsdl_import_xsd_references(recwarn):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
           xmlns:xsd-sec="http://tests.python-zeep.org/xsd-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:import namespace="http://tests.python-zeep.org/wsdl-secondary"
             location="http://tests.python-zeep.org/schema-2.wsdl"/>
@@ -754,7 +754,7 @@ def test_wsdl_import_xsd_references(recwarn):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction=""/>
               <wsdl:input>
@@ -781,11 +781,11 @@ def test_wsdl_import_xsd_references(recwarn):
     wsdl_2 = """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/wsdl-secondary"
           xmlns:mine="http://tests.python-zeep.org/xsd-secondary"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/wsdl-secondary">
           <wsdl:types>
             <xsd:schema
@@ -810,14 +810,14 @@ def test_parse_operation_empty_nodes():
     content = StringIO(
         """
         <?xml version="1.0"?>
-        <wsdl:definitions xmlns:s="https://www.w3.org/2001/XMLSchema"
-            xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
+        <wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema"
+            xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
             xmlns:tns="http://tests.python-zeep.org/"
             xmlns:s1="http://microsoft.com/wsdl/types/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
             targetNamespace="http://tests.python-zeep.org/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/">
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
           <wsdl:types>
             <s:schema targetNamespace="http://tests.python-zeep.org/">
               <s:import namespace="http://microsoft.com/wsdl/types/" />
@@ -838,7 +838,7 @@ def test_parse_operation_empty_nodes():
           </wsdl:message>
           <wsdl:portType name="ExampleSoap">
             <wsdl:operation name="ExampleMethod">
-              <wsdl:documentation xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/">
+              <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
                 Example documentation.
               </wsdl:documentation>
               <wsdl:input message="tns:MessageIn" />
@@ -867,13 +867,13 @@ def test_wsdl_duplicate_tns(recwarn):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
           xmlns:xsd-sec="http://tests.python-zeep.org/xsd-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
 
           <wsdl:import namespace="http://tests.python-zeep.org/xsd-main"
@@ -881,7 +881,7 @@ def test_wsdl_duplicate_tns(recwarn):
 
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction=""/>
               <wsdl:input>
@@ -902,11 +902,11 @@ def test_wsdl_duplicate_tns(recwarn):
     wsdl_2 = """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:mine="http://tests.python-zeep.org/xsd-secondary"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
 
           <wsdl:types>
@@ -939,11 +939,11 @@ def test_wsdl_dtd_entities_rules():
         <!ENTITY writer "Donald Duck.">
         ]>
         <wsdl:definitions
-        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:tns="http://tests.python-zeep.org/xsd-main"
         xmlns:mine="http://tests.python-zeep.org/xsd-secondary"
-        xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
         targetNamespace="http://tests.python-zeep.org/xsd-main">
         <wsdl:types>
           <xsd:schema
@@ -986,12 +986,12 @@ def test_extra_http_headers(recwarn, monkeypatch):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap12/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap12/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap12/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:types>
             <xsd:schema
@@ -1017,7 +1017,7 @@ def test_extra_http_headers(recwarn, monkeypatch):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction="urn:dummyRequest"/>
               <wsdl:input>
@@ -1055,7 +1055,7 @@ def test_extra_http_headers(recwarn, monkeypatch):
         )
 
     expected = """
-        <soap-env:Envelope xmlns:soap-env="https://www.w3.org/2003/05/soap-envelope">
+        <soap-env:Envelope xmlns:soap-env="http://www.w3.org/2003/05/soap-envelope">
           <soap-env:Body>
             <ns0:input xmlns:ns0="http://tests.python-zeep.org/xsd-main">foo</ns0:input>
           </soap-env:Body>
@@ -1070,11 +1070,11 @@ def test_wsdl_no_schema_namespace():
     wsdl_main = StringIO(
         """
         <wsdl:definitions
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
             xmlns:tns="http://Example.org"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://Example.org"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/">
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
           <wsdl:types>
             <xsd:schema elementFormDefault="qualified" >
               <xsd:element name="AddResponse">
@@ -1118,7 +1118,7 @@ def test_wsdl_no_schema_namespace():
             </wsdl:operation>
           </wsdl:portType>
           <wsdl:binding name="DefaultBinding_ICalculator" type="tns:ICalculator">
-            <soap:binding transport="https://schemas.xmlsoap.org/soap/http" />
+            <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
             <wsdl:operation name="Add">
               <soap:operation soapAction="http://Example.org/ICalculator/Add" style="document" />
               <wsdl:input>
@@ -1154,7 +1154,7 @@ def test_wsdl_no_schema_namespace():
     )
 
     expected = """
-        <soap-env:Envelope xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+        <soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <Add>
                 <a>3</a>
@@ -1170,7 +1170,7 @@ def test_namespaced_wsdl_with_empty_import():
     # See https://www.w3.org/TR/2012/REC-xmlschema11-1-20120405/#src-resolve for details
     wsdl_main = StringIO(
         """
-        <wsdl:definitions xmlns:s="https://www.w3.org/2001/XMLSchema" targetNamespace="weird_wsdl" xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/">
+        <wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" targetNamespace="weird_wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
         <wsdl:types>
             <s:schema elementFormDefault="qualified" targetNamespace="weird_wsdl">
                 <s:import />
@@ -1200,7 +1200,7 @@ def test_import_cyclic():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -1218,7 +1218,7 @@ def test_import_cyclic():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/b"
             targetNamespace="http://tests.python-zeep.org/b"
             elementFormDefault="qualified">
@@ -1235,13 +1235,13 @@ def test_import_cyclic():
         """
     <?xml version='1.0'?>
     <definitions
-        xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
         xmlns:tns="http://tests.python-zeep.org/root"
-        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-        xmlns="https://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tests.python-zeep.org/root" name="root">
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tests.python-zeep.org/root" name="root">
         <types>
           <xsd:schema
-              xmlns:xs="https://www.w3.org/2001/XMLSchema"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema"
               xmlns:tns="http://tests.python-zeep.org/b"
               targetNamespace="http://tests.python-zeep.org/b"
               elementFormDefault="qualified">
@@ -1274,7 +1274,7 @@ def test_import_no_location():
         """
         <?xml version="1.0"?>
         <xs:schema
-            xmlns:xs="https://www.w3.org/2001/XMLSchema"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/a"
             targetNamespace="http://tests.python-zeep.org/a"
             xmlns:b="http://tests.python-zeep.org/b"
@@ -1288,13 +1288,13 @@ def test_import_no_location():
         """
     <?xml version='1.0'?>
     <definitions
-        xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
         xmlns:tns="http://tests.python-zeep.org/root"
-        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-        xmlns="https://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tests.python-zeep.org/root" name="root">
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tests.python-zeep.org/root" name="root">
         <types>
           <xsd:schema
-              xmlns:xs="https://www.w3.org/2001/XMLSchema"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema"
               xmlns:tns="http://tests.python-zeep.org/b"
               targetNamespace="http://tests.python-zeep.org/b"
               elementFormDefault="qualified">

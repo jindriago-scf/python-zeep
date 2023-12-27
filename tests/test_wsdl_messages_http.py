@@ -10,12 +10,12 @@ from zeep.wsdl import wsdl
 def test_urlencoded_serialize():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-                 xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                 xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
       <message name="Input">
@@ -81,12 +81,12 @@ def test_urlencoded_serialize():
 def test_urlreplacement_serialize():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-                 xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                 xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
       <message name="Input">
@@ -152,12 +152,12 @@ def test_urlreplacement_serialize():
 def test_mime_content_serialize_form_urlencoded():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-                 xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                 xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
       <message name="Input">
@@ -220,12 +220,12 @@ def test_mime_content_serialize_form_urlencoded():
 def test_mime_content_serialize_text_xml():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-                 xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                 xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
       <message name="Input">
@@ -291,12 +291,12 @@ def test_mime_content_serialize_text_xml():
 def test_mime_content_no_parts():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-                 xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                 xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
 
       <message name="Input"/>
@@ -341,16 +341,16 @@ def test_mime_content_no_parts():
 def test_mime_xml_deserialize():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-                 xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                 xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/tns"
             targetNamespace="http://tests.python-zeep.org/tns"
                 elementFormDefault="qualified">
@@ -422,9 +422,9 @@ def test_mime_multipart_parse():
     load_xml(
         """
         <output
-            xmlns="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/">
+            xmlns="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
           <mime:multipartRelated>
               <mime:part>
                   <soap:body parts="body" use="literal"/>

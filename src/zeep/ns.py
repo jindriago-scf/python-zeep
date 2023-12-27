@@ -1,25 +1,25 @@
 
-SOAP_11 = "https://schemas.xmlsoap.org/wsdl/soap/"
-SOAP_12 = "https://schemas.xmlsoap.org/wsdl/soap12/"
-SOAP_ENV_11 = "https://schemas.xmlsoap.org/soap/envelope/"
-SOAP_ENV_12 = "https://www.w3.org/2003/05/soap-envelope"
+SOAP_11 = "http://schemas.xmlsoap.org/wsdl/soap/"
+SOAP_12 = "http://schemas.xmlsoap.org/wsdl/soap12/"
+SOAP_ENV_11 = "http://schemas.xmlsoap.org/soap/envelope/"
+SOAP_ENV_12 = "http://www.w3.org/2003/05/soap-envelope"
 
-XSI = "https://www.w3.org/2001/XMLSchema-instance"
-XSD = "https://www.w3.org/2001/XMLSchema"
+XSI = "http://www.w3.org/2001/XMLSchema-instance"
+XSD = "http://www.w3.org/2001/XMLSchema"
 
-WSDL = "https://schemas.xmlsoap.org/wsdl/"
-HTTP = "https://schemas.xmlsoap.org/wsdl/http/"
-MIME = "https://schemas.xmlsoap.org/wsdl/mime/"
+WSDL = "http://schemas.xmlsoap.org/wsdl/"
+HTTP = "http://schemas.xmlsoap.org/wsdl/http/"
+MIME = "http://schemas.xmlsoap.org/wsdl/mime/"
 
-WSA = "https://www.w3.org/2005/08/addressing"
+WSA = "http://www.w3.org/2005/08/addressing"
 
 
-DS = "https://www.w3.org/2000/09/xmldsig#"
+DS = "http://www.w3.org/2000/09/xmldsig#"
 WSSE = (
-    "https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
 )
 WSU = (
-    "https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 )
 
 NAMESPACE_TO_PREFIX = {XSD: "xsd"}

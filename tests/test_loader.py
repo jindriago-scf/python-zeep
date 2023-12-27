@@ -12,7 +12,7 @@ def test_huge_text():
     settings = Settings(xml_huge_tree=True)
     tree = parse_xml(
         u"""
-        <s:Envelope xmlns:s="https://schemas.xmlsoap.org/soap/envelope/">
+        <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
          <s:Body>
           <HugeText xmlns="http://hugetext">%s</HugeText>
          </s:Body>
@@ -31,7 +31,7 @@ def test_allow_entities_and_dtd():
         <!DOCTYPE Author [
           <!ENTITY writer "Donald Duck.">
         ]>
-        <s:Envelope xmlns:s="https://schemas.xmlsoap.org/soap/envelope/">
+        <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
          <s:Body>
             <Author>&writer;</Author>
          </s:Body>

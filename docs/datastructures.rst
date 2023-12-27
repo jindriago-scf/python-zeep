@@ -80,7 +80,7 @@ Simple method
     <schema xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/">
       <element name='ElementName'>
-        <complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+        <complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <choice>
             <element name="item_1" type="string"/>
             <element name="item_2" type="string"/>
@@ -104,7 +104,7 @@ Nested using _value_1
     <schema xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/">
       <element name='ElementName'>
-        <complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+        <complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <choice maxOccurs="1">
             <sequence>
                 <element name="item_1_a" type="string"/>
@@ -130,7 +130,7 @@ Nested list using _value_1
     <schema xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/">
       <element name='ElementName'>
-        <complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+        <complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <choice maxOccurs="unbounded">
             <element name="item_1" type="string"/>
             <element name="item_2" type="string"/>

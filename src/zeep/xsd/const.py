@@ -24,4 +24,4 @@ SkipValue = _StaticIdentity("SkipValue")
 Nil = _StaticIdentity("Nil")
 
 
-AUTO_IMPORT_NAMESPACES = ["https://schemas.xmlsoap.org/soap/encoding/"]
+AUTO_IMPORT_NAMESPACES = ["http://schemas.xmlsoap.org/soap/encoding/"]

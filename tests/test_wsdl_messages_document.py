@@ -9,10 +9,10 @@ from zeep.wsdl import wsdl
 def test_parse():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns">
@@ -36,7 +36,7 @@ def test_parse():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -80,10 +80,10 @@ def test_parse():
 def test_parse_with_header():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns">
@@ -111,7 +111,7 @@ def test_parse_with_header():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -169,10 +169,10 @@ def test_parse_with_header():
 def test_parse_with_header_type():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns">
@@ -204,7 +204,7 @@ def test_parse_with_header_type():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -262,10 +262,10 @@ def test_parse_with_header_type():
 def test_parse_with_header_other_message():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns">
@@ -288,7 +288,7 @@ def test_parse_with_header_other_message():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -302,7 +302,7 @@ def test_parse_with_header_other_message():
     )
 
     root = wsdl.Document(wsdl_content, None)
-    root.types.set_ns_prefix("soap-env", "https://schemas.xmlsoap.org/soap/envelope/")
+    root.types.set_ns_prefix("soap-env", "http://schemas.xmlsoap.org/soap/envelope/")
 
     binding = root.bindings["{http://tests.python-zeep.org/tns}TestBinding"]
     operation = binding.get("TestOperation")
@@ -322,7 +322,7 @@ def test_parse_with_header_other_message():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
             <ns0:RequestHeader xmlns:ns0="http://tests.python-zeep.org/tns">foo</ns0:RequestHeader>
           </soap-env:Header>
@@ -337,10 +337,10 @@ def test_parse_with_header_other_message():
 def test_serialize():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -367,7 +367,7 @@ def test_serialize():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -388,7 +388,7 @@ def test_serialize():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:Request xmlns:ns0="http://tests.python-zeep.org/tns">
               <ns0:arg1>ah1</ns0:arg1>
@@ -403,10 +403,10 @@ def test_serialize():
 def test_serialize_multiple_parts():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -434,7 +434,7 @@ def test_serialize_multiple_parts():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -457,7 +457,7 @@ def test_serialize_multiple_parts():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:Request xmlns:ns0="http://tests.python-zeep.org/tns">
             <ns0:arg1>ah1</ns0:arg1>
@@ -476,10 +476,10 @@ def test_serialize_multiple_parts():
 def test_serialize_with_header():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -514,7 +514,7 @@ def test_serialize_with_header():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -543,7 +543,7 @@ def test_serialize_with_header():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
             <ns0:Authentication xmlns:ns0="http://tests.python-zeep.org/tns">
               <ns0:username>mvantellingen</ns0:username>
@@ -563,10 +563,10 @@ def test_serialize_with_header():
 def test_serialize_with_headers_simple():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -601,7 +601,7 @@ def test_serialize_with_headers_simple():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -623,9 +623,9 @@ def test_serialize_with_headers_simple():
         xsd.Sequence(
             [
                 xsd.Element(
-                    "{https://www.w3.org/2005/08/addressing}Action", xsd.String()
+                    "{http://www.w3.org/2005/08/addressing}Action", xsd.String()
                 ),
-                xsd.Element("{https://www.w3.org/2005/08/addressing}To", xsd.String()),
+                xsd.Element("{http://www.w3.org/2005/08/addressing}To", xsd.String()),
             ]
         )
     )
@@ -636,10 +636,10 @@ def test_serialize_with_headers_simple():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
-            <ns0:Action xmlns:ns0="https://www.w3.org/2005/08/addressing">doehet</ns0:Action>
-            <ns1:To xmlns:ns1="https://www.w3.org/2005/08/addressing">server</ns1:To>
+            <ns0:Action xmlns:ns0="http://www.w3.org/2005/08/addressing">doehet</ns0:Action>
+            <ns1:To xmlns:ns1="http://www.w3.org/2005/08/addressing">server</ns1:To>
           </soap-env:Header>
           <soap-env:Body>
             <ns0:Request xmlns:ns0="http://tests.python-zeep.org/tns">
@@ -655,10 +655,10 @@ def test_serialize_with_headers_simple():
 def test_serialize_with_header_and_custom_mixed():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -693,7 +693,7 @@ def test_serialize_with_header_and_custom_mixed():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -728,7 +728,7 @@ def test_serialize_with_header_and_custom_mixed():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
             <ns0:Authentication xmlns:ns0="http://tests.python-zeep.org/tns">
               <ns0:username>mvantellingen</ns0:username>
@@ -751,10 +751,10 @@ def test_serialize_with_header_and_custom_mixed():
 def test_serializer_with_header_custom_elm():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -781,7 +781,7 @@ def test_serializer_with_header_custom_elm():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -812,7 +812,7 @@ def test_serializer_with_header_custom_elm():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
             <ns0:auth xmlns:ns0="http://test.python-zeep.org/custom">
               <ns0:username>mvantellingen</ns0:username>
@@ -832,10 +832,10 @@ def test_serializer_with_header_custom_elm():
 def test_serializer_with_header_custom_xml():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -862,7 +862,7 @@ def test_serializer_with_header_custom_xml():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -890,7 +890,7 @@ def test_serializer_with_header_custom_xml():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
             <ns0:auth xmlns:ns0="http://test.python-zeep.org/custom">
               <ns0:username>mvantellingen</ns0:username>
@@ -910,10 +910,10 @@ def test_serializer_with_header_custom_xml():
 def test_deserialize():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -944,7 +944,7 @@ def test_deserialize():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -969,7 +969,7 @@ def test_deserialize():
         <?xml version="1.0"?>
         <soap-env:Envelope
             xmlns:ns0="http://tests.python-zeep.org/tns"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:Request>
               <ns0:arg1>ah1</ns0:arg1>
@@ -987,10 +987,10 @@ def test_deserialize():
 def test_deserialize_no_content():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -1014,7 +1014,7 @@ def test_deserialize_no_content():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -1039,7 +1039,7 @@ def test_deserialize_no_content():
         <?xml version="1.0"?>
         <soap-env:Envelope
             xmlns:ns0="http://tests.python-zeep.org/tns"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:Request/>
           </soap-env:Body>
@@ -1053,10 +1053,10 @@ def test_deserialize_no_content():
 def test_deserialize_choice():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -1087,7 +1087,7 @@ def test_deserialize_choice():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -1112,7 +1112,7 @@ def test_deserialize_choice():
         <?xml version="1.0"?>
         <soap-env:Envelope
             xmlns:ns0="http://tests.python-zeep.org/tns"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:Request>
               <ns0:arg1>ah1</ns0:arg1>
@@ -1128,10 +1128,10 @@ def test_deserialize_choice():
 def test_deserialize_one_part():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -1163,7 +1163,7 @@ def test_deserialize_one_part():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -1188,7 +1188,7 @@ def test_deserialize_one_part():
         <?xml version="1.0"?>
         <soap-env:Envelope
             xmlns:ns0="http://tests.python-zeep.org/tns"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
             <ns0:auth xmlns:ns0="http://test.python-zeep.org/custom">
               <ns0:username>mvantellingen</ns0:username>
@@ -1212,10 +1212,10 @@ def test_deserialize_one_part():
 def test_deserialize_with_headers():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -1266,7 +1266,7 @@ def test_deserialize_with_headers():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -1296,7 +1296,7 @@ def test_deserialize_with_headers():
         <?xml version="1.0"?>
         <soap-env:Envelope
             xmlns:ns0="http://tests.python-zeep.org/tns"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Header>
             <ns0:Header1>
               <ns0:username>mvantellingen</ns0:username>
@@ -1328,10 +1328,10 @@ def test_deserialize_with_headers():
 def test_serialize_any_type():
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns"
@@ -1357,7 +1357,7 @@ def test_serialize_any_type():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>
@@ -1378,12 +1378,12 @@ def test_serialize_any_type():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body>
             <ns0:Request xmlns:ns0="http://tests.python-zeep.org/tns">
               <ns0:arg1
-                xmlns:xs="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xsi:type="xs:string">ah1</ns0:arg1>
             </ns0:Request>
           </soap-env:Body>
@@ -1400,12 +1400,12 @@ def test_empty_input_parse():
         """
     <wsdl:definitions
         xmlns:tns="http://tests.python-zeep.org/"
-        xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-        xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://tests.python-zeep.org/">
       <wsdl:types>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/">
         <element name="Result">
@@ -1428,7 +1428,7 @@ def test_empty_input_parse():
         </wsdl:operation>
       </wsdl:portType>
       <wsdl:binding name="Binding" type="tns:PortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="getResult">
           <soap:operation soapAction=""/>
           <wsdl:input name="Result">
@@ -1455,7 +1455,7 @@ def test_empty_input_parse():
     expected = """
         <?xml version="1.0"?>
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
           <soap-env:Body/>
         </soap-env:Envelope>
     """

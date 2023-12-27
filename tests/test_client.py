@@ -103,7 +103,7 @@ def test_create_service():
     response = """
     <?xml version="1.0"?>
     <soapenv:Envelope
-        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:stoc="http://example.com/stockquote.xsd">
        <soapenv:Header/>
        <soapenv:Body>
@@ -144,7 +144,7 @@ def test_service_proxy():
     response = """
     <?xml version="1.0"?>
     <soapenv:Envelope
-        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:stoc="http://example.com/stockquote.xsd">
        <soapenv:Header/>
        <soapenv:Body>
@@ -168,9 +168,9 @@ def test_call_method_fault():
     response = """
         <?xml version="1.0" encoding="utf-8"?>
         <soap:Envelope
-            xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <soap:Body>
             <soap:Fault>
               <faultcode>soap:Server</faultcode>
@@ -213,7 +213,7 @@ def test_default_soap_headers():
     response = """
     <?xml version="1.0"?>
     <soapenv:Envelope
-        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:stoc="http://example.com/stockquote.xsd">
        <soapenv:Header/>
        <soapenv:Body>
@@ -229,7 +229,7 @@ def test_default_soap_headers():
         client_obj.service.GetLastTradePrice("foobar")
 
         doc = load_xml(m.request_history[0].body)
-        header = doc.find("{https://schemas.xmlsoap.org/soap/envelope/}Header")
+        header = doc.find("{http://schemas.xmlsoap.org/soap/envelope/}Header")
         assert header is not None
         assert len(list(header)) == 2
 
@@ -262,7 +262,7 @@ def test_default_soap_headers_extra():
     response = """
     <?xml version="1.0"?>
     <soapenv:Envelope
-        xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:stoc="http://example.com/stockquote.xsd">
        <soapenv:Header/>
        <soapenv:Body>
@@ -280,6 +280,6 @@ def test_default_soap_headers_extra():
         )
 
         doc = load_xml(m.request_history[0].body)
-        header = doc.find("{https://schemas.xmlsoap.org/soap/envelope/}Header")
+        header = doc.find("{http://schemas.xmlsoap.org/soap/envelope/}Header")
         assert header is not None
         assert len(list(header)) == 4

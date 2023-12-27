@@ -17,13 +17,13 @@ def test_require_wsa(recwarn, monkeypatch):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsaw="https://www.w3.org/2006/05/addressing/wsdl"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:types>
             <xsd:schema
@@ -49,7 +49,7 @@ def test_require_wsa(recwarn, monkeypatch):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction=""/>
               <wsdl:input>
@@ -85,8 +85,8 @@ def test_require_wsa(recwarn, monkeypatch):
     )
     expected = """
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
-          <soap-env:Header  xmlns:wsa="https://www.w3.org/2005/08/addressing">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+          <soap-env:Header  xmlns:wsa="http://www.w3.org/2005/08/addressing">
             <wsa:Action>urn:dummyRequest</wsa:Action>
             <wsa:MessageID>urn:uuid:ada686f9-5995-4088-bea4-239f694b2eaf</wsa:MessageID>
             <wsa:To>http://tests.python-zeep.org/test</wsa:To>
@@ -108,12 +108,12 @@ def test_force_wsa(recwarn, monkeypatch):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:types>
             <xsd:schema
@@ -139,7 +139,7 @@ def test_force_wsa(recwarn, monkeypatch):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction="urn:dummyRequest"/>
               <wsdl:input>
@@ -173,8 +173,8 @@ def test_force_wsa(recwarn, monkeypatch):
     )
     expected = """
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
-          <soap-env:Header  xmlns:wsa="https://www.w3.org/2005/08/addressing">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+          <soap-env:Header  xmlns:wsa="http://www.w3.org/2005/08/addressing">
             <wsa:Action>urn:dummyRequest</wsa:Action>
             <wsa:MessageID>urn:uuid:ada686f9-5995-4088-bea4-239f694b2eaf</wsa:MessageID>
             <wsa:To>http://tests.python-zeep.org/test</wsa:To>
@@ -196,12 +196,12 @@ def test_force_wsa_soap12(recwarn, monkeypatch):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap12/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap12/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap12/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:types>
             <xsd:schema
@@ -227,7 +227,7 @@ def test_force_wsa_soap12(recwarn, monkeypatch):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction="urn:dummyRequest"/>
               <wsdl:input>
@@ -263,8 +263,8 @@ def test_force_wsa_soap12(recwarn, monkeypatch):
     )
     expected = """
         <soap-env:Envelope
-            xmlns:soap-env="https://www.w3.org/2003/05/soap-envelope">
-          <soap-env:Header  xmlns:wsa="https://www.w3.org/2005/08/addressing">
+            xmlns:soap-env="http://www.w3.org/2003/05/soap-envelope">
+          <soap-env:Header  xmlns:wsa="http://www.w3.org/2005/08/addressing">
             <wsa:Action>urn:dummyRequest</wsa:Action>
             <wsa:MessageID>urn:uuid:ada686f9-5995-4088-bea4-239f694b2eaf</wsa:MessageID>
             <wsa:To>http://tests.python-zeep.org/test</wsa:To>
@@ -291,13 +291,13 @@ def test_require_wsa_new(recwarn, monkeypatch):
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsam="https://www.w3.org/2007/05/addressing/metadata"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:types>
             <xsd:schema
@@ -323,7 +323,7 @@ def test_require_wsa_new(recwarn, monkeypatch):
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction=""/>
               <wsdl:input>
@@ -359,8 +359,8 @@ def test_require_wsa_new(recwarn, monkeypatch):
     )
     expected = """
         <soap-env:Envelope
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/">
-          <soap-env:Header  xmlns:wsa="https://www.w3.org/2005/08/addressing">
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+          <soap-env:Header  xmlns:wsa="http://www.w3.org/2005/08/addressing">
             <wsa:Action>urn:dummyRequest</wsa:Action>
             <wsa:MessageID>urn:uuid:ada686f9-5995-4088-bea4-239f694b2eaf</wsa:MessageID>
             <wsa:To>http://tests.python-zeep.org/test</wsa:To>

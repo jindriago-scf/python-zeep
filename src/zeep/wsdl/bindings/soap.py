@@ -254,8 +254,8 @@ class SoapBinding(Binding):
         transport = soap_node.get("transport")
 
         supported_transports = [
-            "https://schemas.xmlsoap.org/soap/http",
-            "https://www.w3.org/2003/05/soap/bindings/HTTP/",
+            "http://schemas.xmlsoap.org/soap/http",
+            "http://www.w3.org/2003/05/soap/bindings/HTTP/",
         ]
 
         if transport not in supported_transports:

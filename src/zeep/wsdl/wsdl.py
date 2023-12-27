@@ -21,7 +21,7 @@ from zeep.utils import findall_multiple_ns
 from zeep.wsdl import parse
 from zeep.xsd import Schema
 
-NSMAP = {"wsdl": "https://schemas.xmlsoap.org/wsdl/"}
+NSMAP = {"wsdl": "http://schemas.xmlsoap.org/wsdl/"}
 
 logger = logging.getLogger(__name__)
 
@@ -302,12 +302,12 @@ class Definition(object):
         """
         namespace_sets = [
             {
-                "xsd": "https://www.w3.org/2001/XMLSchema",
-                "wsdl": "https://schemas.xmlsoap.org/wsdl/",
+                "xsd": "http://www.w3.org/2001/XMLSchema",
+                "wsdl": "http://schemas.xmlsoap.org/wsdl/",
             },
             {
-                "xsd": "https://www.w3.org/1999/XMLSchema",
-                "wsdl": "https://schemas.xmlsoap.org/wsdl/",
+                "xsd": "http://www.w3.org/1999/XMLSchema",
+                "wsdl": "http://schemas.xmlsoap.org/wsdl/",
             },
         ]
 

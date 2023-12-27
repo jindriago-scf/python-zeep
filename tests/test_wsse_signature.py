@@ -17,13 +17,13 @@ KEY_FILE_PW = os.path.join(
 )
 
 SIGNATURE_METHODS_TESTDATA = (
-    ("RSA_SHA1", "https://www.w3.org/2000/09/xmldsig#rsa-sha1"),
-    ("RSA_SHA256", "https://www.w3.org/2001/04/xmldsig-more#rsa-sha256"),
+    ("RSA_SHA1", "http://www.w3.org/2000/09/xmldsig#rsa-sha1"),
+    ("RSA_SHA256", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"),
 )
 
 DIGEST_METHODS_TESTDATA = (
-    ("SHA1", "https://www.w3.org/2000/09/xmldsig#sha1"),
-    ("SHA256", "https://www.w3.org/2001/04/xmlenc#sha256"),
+    ("SHA1", "http://www.w3.org/2000/09/xmldsig#sha1"),
+    ("SHA256", "http://www.w3.org/2001/04/xmlenc#sha256"),
 )
 
 
@@ -40,14 +40,14 @@ def test_sign_timestamp_if_present():
         """
         <soap-env:Envelope
             xmlns:ns0="http://example.com/stockquote.xsd"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-            xmlns:soap-env="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:wsu="https://schemas.xmlsoap.org/ws/2003/06/utility"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
-          <soap-env:Header xmlns:ns0="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:wsu="http://schemas.xmlsoap.org/ws/2003/06/utility"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <soap-env:Header xmlns:ns0="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
             <ns0:Security>
-              <wsu:Timestamp xmlns:wsu="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+              <wsu:Timestamp xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
                     <wsu:Created>2018-11-18T15:44:27Z</wsu:Created>
                     <wsu:Expires>2018-11-18T15:54:27Z</wsu:Expires>
               </wsu:Timestamp>
@@ -79,9 +79,9 @@ def test_sign(
         """
         <soapenv:Envelope
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/">
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
           <soapenv:Header></soapenv:Header>
           <soapenv:Body>
             <tns:Function>
@@ -117,9 +117,9 @@ def test_sign_pw():
         """
         <soapenv:Envelope
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/">
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
           <soapenv:Header></soapenv:Header>
           <soapenv:Body>
             <tns:Function>
@@ -140,9 +140,9 @@ def test_verify_error():
         """
         <soapenv:Envelope
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/">
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
           <soapenv:Header></soapenv:Header>
           <soapenv:Body>
             <tns:Function>
@@ -169,9 +169,9 @@ def test_signature():
         """
         <soapenv:Envelope
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/">
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
           <soapenv:Header></soapenv:Header>
           <soapenv:Body>
             <tns:Function>
@@ -199,9 +199,9 @@ def test_signature_binary(
         """
         <soapenv:Envelope
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/">
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
           <soapenv:Header></soapenv:Header>
           <soapenv:Body>
             <tns:Function>

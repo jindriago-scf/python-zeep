@@ -269,7 +269,7 @@ def test_schema_recursive_ref():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">

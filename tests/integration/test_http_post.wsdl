@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <definitions 
-  xmlns="https://schemas.xmlsoap.org/wsdl/"
-  xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-  xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
   xmlns:tns="http://test.python-zeep.org/tns/"
   targetNamespace="http://test.python-zeep.org/tns/">
   <types>

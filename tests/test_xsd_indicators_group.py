@@ -309,7 +309,7 @@ def test_xml_group_via_ref():
         load_xml(
             """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema"
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
                    xmlns:tns="http://tests.python-zeep.org/"
                    targetNamespace="http://tests.python-zeep.org/"
                    elementFormDefault="qualified">
@@ -353,7 +353,7 @@ def test_xml_group_via_ref_max_occurs_unbounded():
         load_xml(
             """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema"
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
                    xmlns:tns="http://tests.python-zeep.org/"
                    targetNamespace="http://tests.python-zeep.org/"
                    elementFormDefault="qualified">
@@ -410,7 +410,7 @@ def test_xml_multiple_groups_in_sequence():
         load_xml(
             """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema"
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
                    xmlns:tns="http://tests.python-zeep.org/"
                    targetNamespace="http://tests.python-zeep.org/"
                    elementFormDefault="unqualified">
@@ -470,7 +470,7 @@ def test_xml_group_methods():
         load_xml(
             """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema"
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
                    xmlns:tns="http://tests.python-zeep.org/"
                    targetNamespace="http://tests.python-zeep.org/"
                    elementFormDefault="unqualified">
@@ -505,7 +505,7 @@ def test_xml_group_extension():
         load_xml(
             """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema"
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
                    xmlns:tns="http://tests.python-zeep.org/"
                    targetNamespace="http://tests.python-zeep.org/"
                    elementFormDefault="unqualified">

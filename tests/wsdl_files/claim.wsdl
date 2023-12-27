@@ -2,16 +2,16 @@
 <definitions
     name="ClaimService"
     targetNamespace="http://risky-stuff.com/soap/GetClaimDetails/"
-    xmlns="https://schemas.xmlsoap.org/wsdl/"
-    xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
     xmlns:tns="http://risky-stuff.com/soap/GetClaimDetails/"
-    xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <types>
         <schema elementFormDefault="qualified"
             targetNamespace="http://risky-stuff.com/soap/GetClaimDetails/"
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:SOAP-ENC="https://schemas.xmlsoap.org/soap/encoding/"
-            xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/">
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
             <simpleType name="ClaimID">
                 <restriction base="string"/>
             </simpleType>
@@ -28,14 +28,14 @@
         </operation>
     </portType>
     <binding name="GetClaimDetailsBinding" type="tns:GetClaimDetailsPortType">
-        <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="GetClaimDetails">
-            <soap:operation soapAction="https://schemas.risk-stuff.com/soap/action/#GetClaimDetails"/>
+            <soap:operation soapAction="http://schemas.risk-stuff.com/soap/action/#GetClaimDetails"/>
                 <input>
-                    <soap:body encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" namespace="https://schemas.risk-stuff.com/soap/" use="encoded"/>
+                    <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.risk-stuff.com/soap/" use="encoded"/>
                 </input>
                 <output>
-                    <soap:body encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" namespace="https://schemas.risk-stuff.com/soap/" use="encoded"/>
+                    <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://schemas.risk-stuff.com/soap/" use="encoded"/>
                 </output>
         </operation>
     </binding>
