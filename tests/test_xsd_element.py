@@ -10,7 +10,7 @@ def test_parse_xmlelements_mismatching_namespace():
             b"""
         <?xml version="1.0" encoding="utf-8"?>
         <xsd:schema xmlns:tns="http://tests.python-zeep.org/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           elementFormDefault="qualified"
           targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
@@ -32,8 +32,8 @@ def test_parse_xmlelements_mismatching_namespace():
         """
         <ns0:container
             xmlns:ns0="http://mismatch.python-zeep.org/"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <ns0:item>foobar</ns0:item>
         </ns0:container>
     """

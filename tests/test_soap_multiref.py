@@ -10,14 +10,14 @@ from zeep.transports import Transport
 @pytest.mark.requests
 def test_parse_multiref_soap_response():
     wsdl_file = io.StringIO(
-        u"""
+        """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/">
 
           <wsdl:types>
@@ -67,16 +67,16 @@ def test_parse_multiref_soap_response():
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation">
               <soap:operation soapAction=""/>
               <wsdl:input name="TestOperationRequest">
                 <soap:body use="encoded"
-                           encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" />
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
               </wsdl:input>
               <wsdl:output name="TestOperationResponse">
                 <soap:body use="encoded"
-                           encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" />
+                           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
               </wsdl:output>
             </wsdl:operation>
           </wsdl:binding>
@@ -93,9 +93,9 @@ def test_parse_multiref_soap_response():
     content = """
         <?xml version="1.0"?>
         <soapenv:Envelope
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
            <soapenv:Body>
               <tns:TestOperationResponse>
                 <tns:output>
@@ -134,14 +134,14 @@ def test_parse_multiref_soap_response():
 @pytest.mark.requests
 def test_parse_multiref_soap_response_child():
     wsdl_file = io.StringIO(
-        u"""
+        """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/">
 
           <wsdl:types>
@@ -196,14 +196,14 @@ def test_parse_multiref_soap_response_child():
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="rpc" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation">
               <soap:operation soapAction=""/>
               <wsdl:input name="TestOperationRequest">
-                <soap:body use="encoded" encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" />
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
               </wsdl:input>
               <wsdl:output name="TestOperationResponse">
-                <soap:body use="encoded" encodingStyle="https://schemas.xmlsoap.org/soap/encoding/" />
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
               </wsdl:output>
             </wsdl:operation>
           </wsdl:binding>
@@ -220,9 +220,9 @@ def test_parse_multiref_soap_response_child():
     content = """
         <?xml version="1.0"?>
         <soapenv:Envelope
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
            <soapenv:Body>
               <tns:TestOperationResponse>
                 <tns:output>

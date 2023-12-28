@@ -288,8 +288,8 @@ def test_xml_sequence_with_choice():
         load_xml(
             """
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/tst"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/tst">
@@ -312,8 +312,8 @@ def test_xml_sequence_with_choice():
     xml = load_xml(
         """
         <tst:container
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:tst="http://tests.python-zeep.org/tst">
           <tst:item_1>blabla</tst:item_1>
           <tst:item_3>haha</tst:item_3>
@@ -332,8 +332,8 @@ def test_xml_sequence_with_choice_max_occurs_2():
         load_xml(
             """
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/tst"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/tst">
@@ -358,8 +358,8 @@ def test_xml_sequence_with_choice_max_occurs_2():
     xml = load_xml(
         """
         <tst:container
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:tst="http://tests.python-zeep.org/tst">
           <tst:item_1>item-1-1</tst:item_1>
           <tst:item_1>item-1-2</tst:item_1>
@@ -380,8 +380,8 @@ def test_xml_sequence_with_choice_max_occurs_3():
         load_xml(
             """
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/tst"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/tst">
@@ -407,8 +407,8 @@ def test_xml_sequence_with_choice_max_occurs_3():
     xml = load_xml(
         """
         <tst:container
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:tst="http://tests.python-zeep.org/tst">
           <tst:item_1>text-1</tst:item_1>
           <tst:item_2>text-2</tst:item_2>
@@ -435,8 +435,8 @@ def test_xml_sequence_with_nil_element():
         load_xml(
             """
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/">
@@ -455,8 +455,8 @@ def test_xml_sequence_with_nil_element():
     xml = load_xml(
         """
         <tns:container
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:tns="http://tests.python-zeep.org/">
           <tns:item>text-1</tns:item>
           <tns:item>text-2</tns:item>
@@ -477,8 +477,8 @@ def test_xml_sequence_unbounded():
         load_xml(
             """
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/">
@@ -511,8 +511,8 @@ def test_xml_sequence_recover_from_missing_element():
         load_xml(
             """
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/">
@@ -533,8 +533,8 @@ def test_xml_sequence_recover_from_missing_element():
     xml = load_xml(
         """
         <tns:container
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:tns="http://tests.python-zeep.org/">
           <tns:item_1>text-1</tns:item_1>
           <tns:item_3>text-3</tns:item_3>

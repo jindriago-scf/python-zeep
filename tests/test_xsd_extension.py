@@ -3,8 +3,7 @@ import io
 
 from lxml import etree
 
-from tests.utils import (
-    DummyTransport, assert_nodes_equal, load_xml, render_node)
+from tests.utils import DummyTransport, assert_nodes_equal, load_xml, render_node
 from zeep import xsd
 
 
@@ -14,7 +13,7 @@ def test_simple_content_extension():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -57,7 +56,7 @@ def test_complex_content_sequence_extension():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -107,7 +106,7 @@ def test_complex_content_with_recursive_elements():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -169,7 +168,7 @@ def test_complex_content_sequence_extension_2():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -200,7 +199,7 @@ def test_complex_content_sequence_extension_2():
     node = load_xml(
         """
         <ns0:container xmlns:ns0="http://tests.python-zeep.org/"
-                       xmlns:i="https://www.w3.org/2001/XMLSchema-instance"
+                       xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
                        i:type="ns0:response">
             <ns0:item-1>item-1</ns0:item-1>
             <ns0:item-2>item-2</ns0:item-2>
@@ -220,7 +219,7 @@ def test_complex_type_with_extension_optional():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -277,7 +276,7 @@ def test_complex_with_simple():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -321,8 +320,8 @@ def test_sequence_with_type():
             """
         <?xml version="1.0"?>
         <schema
-                xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -363,7 +362,7 @@ def test_sequence_with_type():
       <document>
         <ns0:item
             xmlns:ns0="http://tests.python-zeep.org/"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             attr_1="test" xsi:type="ns0:subtype">
           <ns0:name>name</ns0:name>
         </ns0:item>
@@ -379,7 +378,7 @@ def test_complex_simple_content():
         <?xml version="1.0"?>
         <xsd:schema
             xmlns:tns="http://tests.python-zeep.org/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
           <xsd:element name="value" type="tns:UUID"/>
@@ -448,12 +447,12 @@ def test_issue_221():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
-                xmlns:ds="https://www.w3.org/2000/09/xmldsig#"
+                xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
-          <import namespace="https://www.w3.org/2000/09/xmldsig#"
+          <import namespace="http://www.w3.org/2000/09/xmldsig#"
                   schemaLocation="https://www.w3.org/TR/xmldsig-core/xmldsig-core-schema.xsd"/>
           <complexType name="BaseType">
             <sequence>
@@ -566,7 +565,7 @@ def test_complex_content_extension_with_sequence():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -620,7 +619,7 @@ def test_extension_abstract_complex_type():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -664,7 +663,7 @@ def test_extension_base_anytype():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -706,7 +705,7 @@ def test_extension_on_ref():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -740,7 +739,7 @@ def test_restrict_on_ref():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">

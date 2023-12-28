@@ -9,7 +9,7 @@ from zeep import Client
 
 
 def build_xml(num):
-    soap = ElementMaker(namespace='https://schemas.xmlsoap.org/soap/envelope/')
+    soap = ElementMaker(namespace='http://schemas.xmlsoap.org/soap/envelope/')
     tns = ElementMaker(namespace='http://benchmark.python-zeep.org/')
 
     body = soap.Body()

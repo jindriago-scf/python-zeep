@@ -9,7 +9,7 @@ def test_simple_type():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -47,7 +47,7 @@ def test_simple_type_optional():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -85,7 +85,7 @@ def test_restriction_global():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -109,7 +109,7 @@ def test_restriction_anon():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -148,7 +148,7 @@ def test_simple_type_list():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -181,7 +181,7 @@ def test_simple_type_list_custom_type():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">

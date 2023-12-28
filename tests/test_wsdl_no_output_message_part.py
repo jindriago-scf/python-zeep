@@ -1,4 +1,4 @@
-from six import StringIO
+from io import StringIO
 
 from zeep.wsdl import wsdl
 
@@ -7,10 +7,10 @@ def test_wsdl_parses_operations_with_no_output():
 
     wsdl_content = StringIO(
         """
-    <definitions xmlns="https://schemas.xmlsoap.org/wsdl/"
+    <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                  xmlns:tns="http://tests.python-zeep.org/tns"
-                 xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  targetNamespace="http://tests.python-zeep.org/tns">
       <types>
         <xsd:schema targetNamespace="http://tests.python-zeep.org/tns">
@@ -33,7 +33,7 @@ def test_wsdl_parses_operations_with_no_output():
       </portType>
 
       <binding name="TestBinding" type="tns:TestPortType">
-        <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="TestOperation">
           <soap:operation soapAction=""/>
           <input>

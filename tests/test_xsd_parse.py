@@ -13,7 +13,7 @@ def test_sequence_parse_regression():
         b"""
         <?xml version="1.0" encoding="utf-8"?>
         <xsd:schema xmlns:tns="http://tests.python-zeep.org/attr"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           elementFormDefault="qualified"
           targetNamespace="http://tests.python-zeep.org/attr">
           <xsd:complexType name="Result">
@@ -32,8 +32,8 @@ def test_sequence_parse_regression():
 
     response_doc = load_xml(
         b"""
-        <s:Envelope xmlns:s="https://schemas.xmlsoap.org/soap/envelope/">
-          <s:Body xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+        <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+          <s:Body xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <Response xmlns="http://tests.python-zeep.org/attr">
                 <Result id="2"/>
             </Response>
@@ -48,7 +48,7 @@ def test_sequence_parse_regression():
     node = response_doc.xpath(
         "//ns0:Response",
         namespaces={
-            "xsd": "https://www.w3.org/2001/XMLSchema",
+            "xsd": "http://www.w3.org/2001/XMLSchema",
             "ns0": "http://tests.python-zeep.org/attr",
         },
     )
@@ -87,7 +87,7 @@ def test_sequence_parse_anytype_nil():
             b"""
         <?xml version="1.0" encoding="utf-8"?>
         <xsd:schema xmlns:tns="http://tests.python-zeep.org/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           elementFormDefault="qualified"
           targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
@@ -108,8 +108,8 @@ def test_sequence_parse_anytype_nil():
         """
         <ns0:container
             xmlns:ns0="http://tests.python-zeep.org/"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
           <ns0:item_1 xsi:type="xsd:anyType"/>
         </ns0:container>
     """
@@ -127,7 +127,7 @@ def test_sequence_parse_anytype_obj():
 
     schema = Schema(
         etree.Element(
-            "{https://www.w3.org/2001/XMLSchema}Schema",
+            "{http://www.w3.org/2001/XMLSchema}Schema",
             targetNamespace="http://tests.python-zeep.org/",
         )
     )
@@ -152,7 +152,7 @@ def test_sequence_parse_anytype_obj():
         """
         <ns0:container
             xmlns:ns0="http://tests.python-zeep.org/"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
           <ns0:item_1 xsi:type="ns0:something">
             <ns0:value>100</ns0:value>
           </ns0:item_1>
@@ -168,8 +168,8 @@ def test_sequence_parse_anytype_regression_17():
         b"""
         <?xml version="1.0" encoding="utf-8"?>
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/tst"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/tst">
@@ -203,8 +203,8 @@ def test_sequence_parse_anytype_regression_17():
         b"""
         <?xml version="1.0" encoding="utf-8"?>
         <tst:getCustomFieldResponse
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:tst="http://tests.python-zeep.org/tst">
           <tst:getCustomFieldReturn>
             <tst:parentItemURI>blabla</tst:parentItemURI>
@@ -427,7 +427,7 @@ def test_union():
         b"""
         <?xml version="1.0" encoding="utf-8"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/tst"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/tst">
@@ -483,8 +483,8 @@ def test_parse_invalid_values():
             b"""
         <?xml version="1.0" encoding="utf-8"?>
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/">
@@ -507,8 +507,8 @@ def test_parse_invalid_values():
         b"""
         <?xml version="1.0" encoding="utf-8"?>
         <tns:container
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xmlns:tns="http://tests.python-zeep.org/"
             attr_1="::" attr_2="2013-10-20">
           <tns:item_1>foo</tns:item_1>
@@ -531,8 +531,8 @@ def test_xsd_missing_localname():
             b"""
         <?xml version="1.0" encoding="utf-8"?>
         <schema
-            xmlns="https://www.w3.org/2001/XMLSchema"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             elementFormDefault="qualified"
             targetNamespace="http://tests.python-zeep.org/">
@@ -551,7 +551,7 @@ def test_xsd_choice_with_references():
             """
             <xsd:schema
                 xmlns:zeep="http://tests.python-zeep.org/"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 targetNamespace="http://tests.python-zeep.org/">
 
               <xsd:element name="el1" type="xsd:string"/>

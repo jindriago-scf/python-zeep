@@ -11,8 +11,8 @@ def test_anyattribute():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -59,8 +59,8 @@ def test_attribute_list_type():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -109,7 +109,7 @@ def test_ref_attribute_qualified():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 attributeFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -144,7 +144,7 @@ def test_ref_attribute_unqualified():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 attributeFormDefault="unqualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -178,7 +178,7 @@ def test_complex_type_with_attributes():
         load_xml(
             """
         <?xml version="1.0"?>
-        <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema">
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
           <xs:complexType name="Address">
             <xs:sequence>
               <xs:element minOccurs="0" maxOccurs="1" name="NameFirst" type="xs:string"/>
@@ -219,7 +219,7 @@ def test_qualified_attribute():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 attributeFormDefault="qualified"
                 elementFormDefault="qualified"
@@ -260,7 +260,7 @@ def test_group():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 attributeFormDefault="qualified"
                 elementFormDefault="qualified"
@@ -305,7 +305,7 @@ def test_group_nested():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 attributeFormDefault="qualified"
                 elementFormDefault="qualified"
@@ -356,8 +356,8 @@ def test_nested_attribute():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -406,8 +406,8 @@ def test_attribute_union_type():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -440,8 +440,8 @@ def test_attribute_union_type_inline():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -475,8 +475,8 @@ def test_attribute_value_retrieval():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">

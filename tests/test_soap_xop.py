@@ -1,8 +1,9 @@
+from io import StringIO
+
 import requests_mock
 from lxml import etree
 from pretend import stub
 from requests_toolbelt.multipart.decoder import MultipartDecoder
-from six import StringIO
 
 from tests.utils import assert_nodes_equal
 from zeep import Client
@@ -21,9 +22,9 @@ def test_rebuild_xml():
         Content-ID: <claim@insurance.com>
 
         <soap:Envelope
-        xmlns:soap="https://www.w3.org/2003/05/soap-envelope"
-        xmlns:xop='https://www.w3.org/2004/08/xop/include'
-        xmlns:xop-mime='https://www.w3.org/2005/05/xmlmime'>
+        xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:xop='http://www.w3.org/2004/08/xop/include'
+        xmlns:xop-mime='http://www.w3.org/2005/05/xmlmime'>
         <soap:Body>
         <submitClaim>
         <accountNumber>5XJ45-3B2</accountNumber>
@@ -62,7 +63,7 @@ def test_rebuild_xml():
     xop.process_xop(document, message_pack)
 
     expected = """
-        <soap:Envelope xmlns:soap="https://www.w3.org/2003/05/soap-envelope" xmlns:xop="https://www.w3.org/2004/08/xop/include" xmlns:xop-mime="https://www.w3.org/2005/05/xmlmime">
+        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:xop-mime="http://www.w3.org/2005/05/xmlmime">
           <soap:Body>
             <submitClaim>
             <accountNumber>5XJ45-3B2</accountNumber>
@@ -80,12 +81,12 @@ def get_client_service():
         """
         <?xml version="1.0"?>
         <wsdl:definitions
-          xmlns:wsdl="https://schemas.xmlsoap.org/wsdl/"
-          xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+          xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xmlns:tns="http://tests.python-zeep.org/xsd-main"
           xmlns:sec="http://tests.python-zeep.org/wsdl-secondary"
-          xmlns:soap="https://schemas.xmlsoap.org/wsdl/soap/"
-          xmlns:wsdlsoap="https://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+          xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
           targetNamespace="http://tests.python-zeep.org/xsd-main">
           <wsdl:types>
             <xsd:schema
@@ -136,7 +137,7 @@ def get_client_service():
           </wsdl:portType>
 
           <wsdl:binding name="TestBinding" type="tns:TestPortType">
-            <soap:binding style="document" transport="https://schemas.xmlsoap.org/soap/http"/>
+            <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
             <wsdl:operation name="TestOperation1">
               <soap:operation soapAction="urn:dummyRequest"/>
               <wsdl:input>
@@ -188,8 +189,8 @@ def test_xop():
 
         <?xml version="1.0" encoding="UTF-8"?>
         <soap:Envelope
-            xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:xop="https://www.w3.org/2004/08/xop/include"
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:xop="http://www.w3.org/2004/08/xop/include"
             xmlns:test="http://tests.python-zeep.org/xsd-main">
             <soap:Body>
                 <test:resultSimple>
@@ -218,8 +219,8 @@ def test_xop():
 
         <?xml version="1.0" encoding="UTF-8"?>
         <soap:Envelope
-            xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:xop="https://www.w3.org/2004/08/xop/include"
+            xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:xop="http://www.w3.org/2004/08/xop/include"
             xmlns:test="http://tests.python-zeep.org/xsd-main">
             <soap:Body>
                 <test:resultComplex>
@@ -272,8 +273,8 @@ def test_xop_cid_encoded():
 
             <?xml version="1.0" encoding="UTF-8"?>
             <soap:Envelope
-                xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/"
-                xmlns:xop="https://www.w3.org/2004/08/xop/include"
+                xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+                xmlns:xop="http://www.w3.org/2004/08/xop/include"
                 xmlns:test="http://tests.python-zeep.org/xsd-main">
                 <soap:Body>
                     <test:resultComplex>

@@ -1,4 +1,4 @@
-class Compose(object):
+class Compose:
     def __init__(self, wsse_objects):
         self.wsse_objects = wsse_objects
 
@@ -10,3 +10,7 @@ class Compose(object):
     def verify(self, envelope):
         for obj in self.wsse_objects:
             obj.verify(envelope)
+
+    def verify_response(self, envelope):
+        for obj in self.wsse_objects:
+            obj.verify_response(envelope)

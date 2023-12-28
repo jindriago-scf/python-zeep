@@ -15,7 +15,7 @@ def test_soap11_no_output():
     client = Client("tests/wsdl_files/soap.wsdl")
     content = """
         <soapenv:Envelope
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
           <soapenv:Body></soapenv:Body>
         </soapenv:Envelope>
@@ -31,7 +31,7 @@ def test_soap11_process_error():
     response = load_xml(
         """
         <soapenv:Envelope
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
           <soapenv:Body>
             <soapenv:Fault>
@@ -62,13 +62,46 @@ def test_soap11_process_error():
         assert exc.subcodes is None
         assert "detail-message" in etree.tostring(exc.detail).decode("utf-8")
 
+    responseWithNamespaceInFault = load_xml(
+        """
+        <soapenv:Envelope
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:stoc="http://example.com/stockquote.xsd">
+          <soapenv:Body>
+            <soapenv:Fault xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+              <faultcode>fault-code-withNamespace</faultcode>
+              <faultstring>fault-string-withNamespace</faultstring>
+              <detail>
+                <e:myFaultDetails xmlns:e="http://myexample.org/faults">
+                  <e:message>detail-message-withNamespace</e:message>
+                  <e:errorcode>detail-code-withNamespace</e:errorcode>
+                </e:myFaultDetails>
+              </detail>
+            </soapenv:Fault>
+          </soapenv:Body>
+        </soapenv:Envelope>
+    """
+    )
+
+    try:
+        binding.process_error(responseWithNamespaceInFault, None)
+        assert False
+    except Fault as exc:
+        assert exc.message == "fault-string-withNamespace"
+        assert exc.code == "fault-code-withNamespace"
+        assert exc.actor is None
+        assert exc.subcodes is None
+        assert "detail-message-withNamespace" in etree.tostring(exc.detail).decode(
+            "utf-8"
+        )
+
 
 def test_soap12_process_error():
     response = """
         <soapenv:Envelope
             xmlns="http://example.com/example1"
             xmlns:ex="http://example.com/example2"
-            xmlns:soapenv="https://www.w3.org/2003/05/soap-envelope">
+            xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
           <soapenv:Body>
             <soapenv:Fault>
              <soapenv:Code>
@@ -144,7 +177,7 @@ def test_no_content_type():
     data = """
         <?xml version="1.0"?>
         <soapenv:Envelope
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
            <soapenv:Header/>
            <soapenv:Body>
@@ -230,10 +263,10 @@ def test_mime_multipart():
 
         <?xml version='1.0' ?>
         <SOAP-ENV:Envelope
-        xmlns:SOAP-ENV="https://schemas.xmlsoap.org/soap/envelope/">
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
         <SOAP-ENV:Body>
         <claim:insurance_claim_auto id="insurance_claim_document_id"
-        xmlns:claim="https://schemas.risky-stuff.com/Auto-Claim">
+        xmlns:claim="http://schemas.risky-stuff.com/Auto-Claim">
         <theSignedForm href="cid:claim061400a.tiff@claiming-it.com"/>
         <theCrashPhoto href="cid:claim061400a.jpeg@claiming-it.com"/>
         <!-- ... more claim details go here... -->
@@ -290,10 +323,10 @@ def test_mime_multipart_no_encoding():
 
         <?xml version='1.0' ?>
         <SOAP-ENV:Envelope
-        xmlns:SOAP-ENV="https://schemas.xmlsoap.org/soap/envelope/">
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
         <SOAP-ENV:Body>
         <claim:insurance_claim_auto id="insurance_claim_document_id"
-        xmlns:claim="https://schemas.risky-stuff.com/Auto-Claim">
+        xmlns:claim="http://schemas.risky-stuff.com/Auto-Claim">
         <theSignedForm href="cid:claim061400a.tiff@claiming-it.com"/>
         <theCrashPhoto href="cid:claim061400a.jpeg@claiming-it.com"/>
         <!-- ... more claim details go here... -->
@@ -342,7 +375,7 @@ def test_unexpected_headers():
     data = """
         <?xml version="1.0"?>
         <soapenv:Envelope
-            xmlns:soapenv="https://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:stoc="http://example.com/stockquote.xsd">
            <soapenv:Header>
              <stoc:IamUnexpected>uhoh</stoc:IamUnexpected>
