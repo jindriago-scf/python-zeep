@@ -219,11 +219,21 @@ class SoapBinding(Binding):
             client, doc, response.headers, operation
         )
 
-        if client.wsse:
-            if not isinstance(client.wsse, list):
-                client.wsse.verify_response(doc)
+        if client.wsse and hasattr(client.wsse, "verify_response"):
+            client.wsse.verify_response(doc)
+        elif client.wsse:
+            # Support for iterable wsse...
+            # Should use zeep.wsse.Compose instead of the iterable
+            try:
+                iter(client.wsse)
+            except TypeError:
+                # Not an iterable, ignore verification
+                pass
             else:
-                for wsse_item in (wsse_item for wsse_item in client.wsse if "verify_response" in dir(wsse_item)):
+                verifiable_wsse_items = (
+                    i for i in client.wsse if hasattr(i, "verify_response")
+                )
+                for wsse_item in verifiable_wsse_items:
                     wsse_item.verify_response(doc)
 
         # If the response code is not 200 or if there is a Fault node available

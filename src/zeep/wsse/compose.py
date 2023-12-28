@@ -10,3 +10,7 @@ class Compose:
     def verify(self, envelope):
         for obj in self.wsse_objects:
             obj.verify(envelope)
+
+    def verify_response(self, envelope):
+        for obj in self.wsse_objects:
+            obj.verify_response(envelope)

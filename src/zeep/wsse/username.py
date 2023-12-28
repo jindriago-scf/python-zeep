@@ -92,6 +92,9 @@ class UsernameToken:
     def verify(self, envelope):
         pass
 
+    def verify_response(self, envelope):
+        pass
+
     def _create_password_text(self):
         return [
             utils.WSSE.Password(
