@@ -49,7 +49,7 @@ with open("README.rst") as fh:
 
 setup(
     name="zeep-bold",
-    version="4.2.1",
+    version="4.2.2a0",
     description="A fork of Michael van Tellingen of python-zeep",
     long_description=long_description,
     author="Julio Indriago",
