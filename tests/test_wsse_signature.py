@@ -208,9 +208,10 @@ def test_signature():
     """
     )
 
-    plugin = wsse.Signature(KEY_FILE_PW, KEY_FILE_PW, "geheim")
+    plugin = wsse.Signature(KEY_FILE_PW, KEY_FILE_PW, KEY_FILE_PW, "geheim")
     envelope, headers = plugin.apply(envelope, {})
     plugin.verify(envelope)
+    plugin.verify_response(envelope)
 
 
 @skip_if_no_xmlsec
@@ -241,12 +242,14 @@ def test_signature_binary(
     plugin = wsse.BinarySignature(
         KEY_FILE_PW,
         KEY_FILE_PW,
+        KEY_FILE_PW,
         "geheim",
         signature_method=getattr(xmlsec.Transform, signature_method),
         digest_method=getattr(xmlsec.Transform, digest_method),
     )
     envelope, headers = plugin.apply(envelope, {})
     plugin.verify(envelope)
+    plugin.verify_response(envelope)
     # Test the reference
     bintok = envelope.xpath(
         "soapenv:Header/wsse:Security/wsse:BinarySecurityToken",
