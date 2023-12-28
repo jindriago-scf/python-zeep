@@ -1,6 +1,6 @@
-import keyword
 import logging
 import re
+import typing
 
 from lxml import etree
 
@@ -15,41 +15,42 @@ from zeep.xsd.types.unresolved import UnresolvedCustomType, UnresolvedType
 logger = logging.getLogger(__name__)
 
 
-class tags(object):
-    pass
+class tags:
+    schema = xsd_ns("schema")
+    import_ = xsd_ns("import")
+    include = xsd_ns("include")
+    annotation = xsd_ns("annotation")
+    element = xsd_ns("element")
+    simpleType = xsd_ns("simpleType")
+    complexType = xsd_ns("complexType")
+    simpleContent = xsd_ns("simpleContent")
+    complexContent = xsd_ns("complexContent")
+    sequence = xsd_ns("sequence")
+    group = xsd_ns("group")
+    choice = xsd_ns("choice")
+    all = xsd_ns("all")
+    list = xsd_ns("list")
+    union = xsd_ns("union")
+    attribute = xsd_ns("attribute")
+    any = xsd_ns("any")
+    anyAttribute = xsd_ns("anyAttribute")
+    attributeGroup = xsd_ns("attributeGroup")
+    restriction = xsd_ns("restriction")
+    extension = xsd_ns("extension")
+    notation = xsd_ns("notations")
 
 
-for name in [
-    "schema",
-    "import",
-    "include",
-    "annotation",
-    "element",
-    "simpleType",
-    "complexType",
-    "simpleContent",
-    "complexContent",
-    "sequence",
-    "group",
-    "choice",
-    "all",
-    "list",
-    "union",
-    "attribute",
-    "any",
-    "anyAttribute",
-    "attributeGroup",
-    "restriction",
-    "extension",
-    "notation",
-]:
-    attr = name if name not in keyword.kwlist else name + "_"
-    setattr(tags, attr, xsd_ns(name))
-
-
-class SchemaVisitor(object):
+class SchemaVisitor:
     """Visitor which processes XSD files and registers global elements and
     types in the given schema.
+
+    Notes:
+
+    TODO: include and import statements can reference other nodes. We need
+    to load these first. Always global.
+
+
+
 
     :param schema:
     :type schema: zeep.xsd.schema.Schema
@@ -63,19 +64,23 @@ class SchemaVisitor(object):
         self.schema = schema
         self._includes = set()
 
-    def register_element(self, qname, instance):
+    def register_element(self, qname: etree.QName, instance: xsd_elements.Element):
         self.document.register_element(qname, instance)
 
-    def register_attribute(self, name, instance):
+    def register_attribute(
+        self, name: etree.QName, instance: xsd_elements.Attribute
+    ) -> None:
         self.document.register_attribute(name, instance)
 
-    def register_type(self, qname, instance):
+    def register_type(self, qname: etree.QName, instance) -> None:
         self.document.register_type(qname, instance)
 
-    def register_group(self, qname, instance):
+    def register_group(self, qname: etree.QName, instance: xsd_elements.Group):
         self.document.register_group(qname, instance)
 
-    def register_attribute_group(self, qname, instance):
+    def register_attribute_group(
+        self, qname: etree.QName, instance: xsd_elements.AttributeGroup
+    ) -> None:
         self.document.register_attribute_group(qname, instance)
 
     def register_import(self, namespace, document):
@@ -96,7 +101,7 @@ class SchemaVisitor(object):
             # Some wsdl's reference to xs:schema, we ignore that for now. It
             # might be better in the future to process the actual schema file
             # so that it is handled correctly
-            if ref.namespace == "https://www.w3.org/2001/XMLSchema":
+            if ref.namespace == "http://www.w3.org/2001/XMLSchema":
                 return
             return xsd_elements.RefAttribute(
                 node.tag, ref, self.schema, array_type=array_type
@@ -190,7 +195,7 @@ class SchemaVisitor(object):
             raise XMLParseError(
                 "The attribute 'namespace' must be existent if the "
                 "importing schema has no target namespace.",
-                filename=self._document.location,
+                filename=self.document.location,
                 sourceline=node.sourceline,
             )
 
@@ -216,7 +221,7 @@ class SchemaVisitor(object):
 
         # Hardcode the mapping between the xml namespace and the xsd for now.
         # This seems to fix issues with exchange wsdl's, see #220
-        if not location and namespace == "https://www.w3.org/XML/1998/namespace":
+        if not location and namespace == "http://www.w3.org/XML/1998/namespace":
             location = "https://www.w3.org/2001/xml.xsd"
 
         # Silently ignore import statements which we can't resolve via the
@@ -230,12 +235,7 @@ class SchemaVisitor(object):
             return
 
         # Load the XML
-        schema_node = load_external(
-            location,
-            transport=self.schema._transport,
-            base_url=self.document._location,
-            settings=self.schema.settings,
-        )
+        schema_node = self._retrieve_data(location, base_url=self.document._location)
 
         # Check if the xsd:import namespace matches the targetNamespace. If
         # the xsd:import statement didn't specify a namespace then make sure
@@ -289,12 +289,7 @@ class SchemaVisitor(object):
         if location in self._includes:
             return
 
-        schema_node = load_external(
-            location,
-            self.schema._transport,
-            base_url=self.document._base_url,
-            settings=self.schema.settings,
-        )
+        schema_node = self._retrieve_data(location, base_url=self.document._base_url)
         self._includes.add(location)
 
         # When the included document has no default namespace defined but the
@@ -440,7 +435,9 @@ class SchemaVisitor(object):
             self.register_element(qname, element)
         return element
 
-    def visit_attribute(self, node, parent):
+    def visit_attribute(
+        self, node: etree._Element, parent: etree._Element
+    ) -> typing.Union[xsd_elements.Attribute, xsd_elements.RefAttribute]:
         """Declares an attribute.
 
         Definition::
@@ -467,7 +464,7 @@ class SchemaVisitor(object):
         is_global = parent.tag == tags.schema
 
         # Check of wsdl:arayType
-        array_type = node.get("{https://schemas.xmlsoap.org/wsdl/}arrayType")
+        array_type = node.get("{http://schemas.xmlsoap.org/wsdl/}arrayType")
         if array_type:
             match = re.match(r"([^\[]+)", array_type)
             if match:
@@ -509,6 +506,7 @@ class SchemaVisitor(object):
 
         # Only register global elements
         if is_global:
+            assert name is not None
             self.register_attribute(name, attr)
         return attr
 
@@ -537,7 +535,7 @@ class SchemaVisitor(object):
         else:
             name = parent.get("name", "Anonymous")
             is_global = False
-        base_type = "{https://www.w3.org/2001/XMLSchema}string"
+        base_type = "{http://www.w3.org/2001/XMLSchema}string"
         qname = as_qname(name, node.nsmap, self.document._target_namespace)
 
         annotation, items = self._pop_annotation(list(node))
@@ -583,7 +581,7 @@ class SchemaVisitor(object):
 
         """
         children = []
-        base_type = "{https://www.w3.org/2001/XMLSchema}anyType"
+        base_type = "{http://www.w3.org/2001/XMLSchema}anyType"
 
         # If the complexType's parent is an element then this type is
         # anonymous and should have no name defined. Otherwise it's global
@@ -1196,6 +1194,11 @@ class SchemaVisitor(object):
         """
         pass
 
+    def _retrieve_data(self, url: typing.IO, base_url=None):
+        return load_external(
+            url, self.schema._transport, base_url, settings=self.schema.settings
+        )
+
     def _get_type(self, name):
         assert name is not None
         name = self._create_qname(name)
@@ -1207,7 +1210,7 @@ class SchemaVisitor(object):
 
         # Handle reserved namespace
         if name.namespace == "xml":
-            name = etree.QName("https://www.w3.org/XML/1998/namespace", name.localname)
+            name = etree.QName("http://www.w3.org/XML/1998/namespace", name.localname)
 
         # Various xsd builders assume that some schema's are available by
         # default (actually this is mostly just the soap-enc ns). So live with

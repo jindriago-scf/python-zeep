@@ -9,7 +9,7 @@ def test_union_same_types():
         <?xml version="1.0"?>
         <xsd:schema
             xmlns="http://tests.python-zeep.org/"
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -50,7 +50,7 @@ def test_union_mixed():
             """
         <?xml version="1.0"?>
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">

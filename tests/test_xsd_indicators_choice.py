@@ -14,7 +14,7 @@ def test_choice_element():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -60,7 +60,7 @@ def test_choice_element_second_elm():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -106,7 +106,7 @@ def test_choice_element_second_elm_positional():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -187,7 +187,7 @@ def test_choice_element_multiple():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -233,7 +233,7 @@ def test_choice_element_optional():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -275,7 +275,7 @@ def test_choice_element_with_any():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -321,7 +321,7 @@ def test_choice_element_with_only_any():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -367,7 +367,7 @@ def test_choice_element_with_any_max_occurs():
         load_xml(
             """
         <schema targetNamespace="http://tests.python-zeep.org/"
-            xmlns="https://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
 
@@ -415,7 +415,7 @@ def test_choice_optional_values():
     schema = load_xml(
         """
         <xsd:schema
-            xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tns="http://tests.python-zeep.org/"
             targetNamespace="http://tests.python-zeep.org/"
             elementFormDefault="qualified">
@@ -441,7 +441,7 @@ def test_choice_in_sequence():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -487,12 +487,12 @@ def test_choice_with_sequence():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice>
                 <xsd:sequence>
                     <xsd:element name="item_1" type="xsd:string"/>
@@ -534,12 +534,12 @@ def test_choice_with_sequence_once():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:sequence>
                 <xsd:element name="item_0" type="xsd:string"/>
                 <xsd:choice>
@@ -581,12 +581,12 @@ def test_choice_with_sequence_unbounded():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice>
                 <xsd:sequence maxOccurs="unbounded">
                   <xsd:element name="item_0" type="xsd:string"/>
@@ -647,12 +647,12 @@ def test_choice_with_sequence_missing_elements():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice maxOccurs="2">
                 <xsd:sequence>
                     <xsd:element name="item_1" type="xsd:string"/>
@@ -680,12 +680,12 @@ def test_choice_with_sequence_once_extra_data():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:sequence>
                 <xsd:element name="item_0" type="xsd:string"/>
                 <xsd:choice>
@@ -729,12 +729,12 @@ def test_choice_with_sequence_second():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice>
                 <xsd:sequence>
                     <xsd:element name="item_1" type="xsd:string"/>
@@ -776,12 +776,12 @@ def test_choice_with_sequence_invalid():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice>
                 <xsd:sequence>
                     <xsd:element name="item_1" type="xsd:string"/>
@@ -812,12 +812,12 @@ def test_choice_with_sequence_change():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name='ElementName'>
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice>
                 <xsd:sequence>
                     <xsd:element name="item_1" type="xsd:string"/>
@@ -870,12 +870,12 @@ def test_choice_with_sequence_change_named():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name='ElementName'>
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice>
                 <xsd:sequence>
                     <xsd:element name="item_1" type="xsd:string"/>
@@ -919,12 +919,12 @@ def test_choice_with_sequence_multiple():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice maxOccurs="2">
                 <xsd:sequence>
                     <xsd:element name="item_1" type="xsd:string"/>
@@ -970,12 +970,12 @@ def test_choice_with_sequence_and_element():
         """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice>
                 <xsd:element name="item_1" type="xsd:string"/>
                 <xsd:sequence>
@@ -1015,7 +1015,7 @@ def test_element_ref_in_choice():
     node = etree.fromstring(
         """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                    elementFormDefault="qualified">
@@ -1064,12 +1064,12 @@ def test_parse_dont_loop():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice maxOccurs="unbounded">
                 <xsd:element name="item_1" type="xsd:string"/>
                 <xsd:element name="item_2" type="xsd:string"/>
@@ -1102,12 +1102,12 @@ def test_parse_check_unexpected():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:choice maxOccurs="unbounded">
                 <xsd:element name="item_1" type="xsd:string"/>
                 <xsd:element name="item_2" type="xsd:string"/>
@@ -1139,12 +1139,12 @@ def test_parse_check_mixed():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
           <xsd:element name="container">
-            <xsd:complexType xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+            <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema">
               <xsd:sequence>
                 <xsd:choice maxOccurs="unbounded">
                   <xsd:element name="item_1" type="xsd:string"/>
@@ -1178,8 +1178,8 @@ def test_parse_check_mixed_choices():
             """
         <?xml version="1.0"?>
         <schema
-                xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -1290,8 +1290,8 @@ def test_choice_extend():
             """
         <?xml version="1.0"?>
         <schema
-                xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -1364,8 +1364,8 @@ def test_choice_extend_base():
             """
         <?xml version="1.0"?>
         <schema
-                xmlns="https://www.w3.org/2001/XMLSchema"
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns="http://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -1415,7 +1415,7 @@ def test_nested_choice():
         load_xml(
             """
             <?xml version="1.0"?>
-            <schema xmlns="https://www.w3.org/2001/XMLSchema"
+            <schema xmlns="http://www.w3.org/2001/XMLSchema"
                     xmlns:tns="http://tests.python-zeep.org/"
                     targetNamespace="http://tests.python-zeep.org/"
                     elementFormDefault="qualified">
@@ -1480,7 +1480,7 @@ def test_unit_choice_parse_xmlelements_max_1():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">
@@ -1523,7 +1523,7 @@ def test_unit_choice_parse_xmlelements_max_2():
             """
         <?xml version="1.0"?>
         <xsd:schema
-                xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 elementFormDefault="qualified"
                 targetNamespace="http://tests.python-zeep.org/">

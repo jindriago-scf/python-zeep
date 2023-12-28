@@ -2,13 +2,13 @@
 <definitions 
     xmlns:tns="http://example.com/stockquote.wsdl" 
     xmlns:xsd1="http://example.com/stockquote.xsd" 
-    xmlns:http="https://schemas.xmlsoap.org/wsdl/http/"
-    xmlns:mime="https://schemas.xmlsoap.org/wsdl/mime/"
-    xmlns="https://schemas.xmlsoap.org/wsdl/"
+    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+    xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
     name="StockQuote" 
     targetNamespace="http://example.com/stockquote.wsdl">
   <types>
-    <schema xmlns="https://www.w3.org/2001/XMLSchema"
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" 
             targetNamespace="http://example.com/stockquote.xsd">
       <complexType name="Address">
         <sequence>

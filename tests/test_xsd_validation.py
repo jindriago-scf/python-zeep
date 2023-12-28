@@ -9,7 +9,7 @@ def test_validate_element_value():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -39,7 +39,7 @@ def test_validate_element_value():
 
     with pytest.raises(exceptions.ValidationError) as exc:
         result = render_node(container_elm, obj)
-    assert "Missing element item (container.item)" in str(exc)
+    assert "Missing element item (container.item)" in str(exc.value)
 
     obj.item = "bar"
     result = render_node(container_elm, obj)
@@ -55,7 +55,7 @@ def test_validate_required_attribute():
         load_xml(
             """
         <?xml version="1.0"?>
-        <schema xmlns="https://www.w3.org/2001/XMLSchema"
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
                 xmlns:tns="http://tests.python-zeep.org/"
                 targetNamespace="http://tests.python-zeep.org/"
                 elementFormDefault="qualified">
@@ -82,7 +82,7 @@ def test_validate_required_attribute():
     with pytest.raises(exceptions.ValidationError) as exc:
         result = render_node(container_elm, obj)
     assert "The attribute item is not valid: Value is required (container.item)" in str(
-        exc
+        exc.value
     )
 
     obj.item = "bar"
